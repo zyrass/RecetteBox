@@ -166,8 +166,12 @@ Le **cœur du projet** correspond aux phases 00 à 07. La phase 08 est un emplac
 | Phase 01 | [docs/01-cursus/01-squelette.md](docs/01-cursus/01-squelette.md) | Prêt |
 | Phase 02 | [docs/01-cursus/02-modele.md](docs/01-cursus/02-modele.md) | Prêt |
 | Phase 03 | [docs/01-cursus/03-livewire.md](docs/01-cursus/03-livewire.md) | Prêt |
-| Phases 04 à 07 | _Générées durant le cursus_ | En cours |
-| Phase 09 (bonus) | [docs/09-bonus/09-authentification.md](docs/09-bonus/09-authentification.md) | Bonus |
+| Phase 04 | docs/01-cursus/04-reactivite.md | À faire |
+| Phase 05 | docs/01-cursus/05-crud-alpine.md | À faire |
+| Phase 06 | docs/01-cursus/06-dashboard.md | À faire |
+| Phase 07 | docs/01-cursus/07-finitions.md | À faire |
+| Phase 08 | docs/01-cursus/08-tests.md | À faire |
+| Phase 09 | [docs/09-bonus/09-authentification.md](docs/09-bonus/09-authentification.md) | Bonus |
 
 <br>
 
@@ -179,13 +183,25 @@ Le **cœur du projet** correspond aux phases 00 à 07. La phase 08 est un emplac
 
 ```text
 recettebox/
-├── README.md                         # Ce fichier
-├── docs/                             # Documentation pédagogique par dossiers
-│   ├── 00-configuration/             # OS (Windows, Mac, Linux)
-│   ├── 01-cursus/                    # Phases 01 à 07
-│   └── 09-bonus/                     # Phases bonus
-└── app/                              # Code Laravel (généré à partir de la Phase 1)
-    └── ...                           # Structure standard Laravel
+├── README.md                         # Guide principal
+├── docs/
+│   ├── README.md                     # Sommaire de la documentation
+│   ├── 00-configuration/             # Préparation de l'environnement
+│   │   ├── linux.md
+│   │   ├── macos.md
+│   │   └── windows11.md
+│   ├── 01-cursus/                    # Le parcours pas à pas
+│   │   ├── 01-squelette.md
+│   │   ├── 02-modele.md
+│   │   ├── 03-livewire.md
+│   │   ├── 04-reactivite.md          # [À faire] Recherche et filtres
+│   │   ├── 05-crud-alpine.md         # [À faire] Edition et Modales
+│   │   ├── 06-dashboard.md           # [À faire] Statistiques
+│   │   ├── 07-finitions.md           # [À faire] Toasts et Dark mode
+│   │   └── 08-tests.md               # [À faire] Pest / Tests unitaires
+│   └── 09-bonus/                     # Modules avancés
+│       └── 09-authentification.md
+└── (app, routes, resources...)       # Code Laravel généré en Phase 1
 ```
 
 Le code Laravel n'existe pas encore. Il sera créé lors de la Phase 1 via `laravel new recettebox`.
