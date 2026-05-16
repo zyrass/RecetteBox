@@ -76,7 +76,7 @@ Aucune fonctionnalité nouvelle ici. On reprend ce qui existe et on le rend agr�
 
 <br>
 
-## Diagramme d'état du mode sombre
+Ce diagramme illustre la machine à états complexe derrière la persistance du thème. Comprendre ce flux est crucial pour garantir une expérience utilisateur fluide et sans éclats lumineux (FOUC) lors de la navigation SPA.
 
 ```mermaid
 stateDiagram-v2
@@ -97,11 +97,13 @@ stateDiagram-v2
     end note
 
     note right of Sombre
-        Sans reapplication sur
+        Sans reapplication on
         livewire:navigated, le theme
         se perd au changement de page.
     end note
 ```
+
+_Ce schéma d'état détaille la logique de bascule entre les modes clair et sombre, en mettant l'accent sur la synchronisation avec le localStorage et la réapplication du thème lors des navigations Livewire._
 
 <br>
 
@@ -109,7 +111,7 @@ stateDiagram-v2
 
 <br>
 
-## Diagramme de séquence : un toast après enregistrement
+La gestion des notifications repose sur une communication asynchrone entre le serveur et le client. Ce diagramme de séquence montre l'importance du découpage des responsabilités : le serveur décide du message, le client gère l'affichage animé.
 
 ```mermaid
 sequenceDiagram
@@ -130,13 +132,15 @@ sequenceDiagram
     DOM-->>U: toast disparu, aucune action requise
 ```
 
+_Cette séquence décrit le cycle de vie d'une notification, depuis le déclenchement de l'action par l'utilisateur jusqu'à la disparition automatique du toast gérée par Alpine.js._
+
 <br>
 
 ---
 
 <br>
 
-## Flux de la phase
+Avant de plonger dans le code, voici la roadmap visuelle de cette phase finale. Ce flux permet de garder une vue d'ensemble sur l'ordre logique d'implémentation des finitions UX.
 
 ```mermaid
 flowchart TD
@@ -160,6 +164,8 @@ flowchart TD
     style Done fill:#1f2937,stroke:#10b981,color:#f3f4f6
     style Debug fill:#1f2937,stroke:#ef4444,color:#f3f4f6
 ```
+
+_Ce logigramme présente les 9 étapes clés de la Phase 07, guidant le développeur de la création de la branche jusqu'au bilan final du cœur de l'application._
 
 <br>
 
