@@ -15,6 +15,7 @@
 .phpunit.result.cache
 .vscode/
 /scratch/
-/docs/images/ (Wait, we want to keep images in docs for README? Yes, user said "Les images ont été enregistrées dans docs/images/ et poussées sur le dépôt distant pour être visibles par tous.")
+plan-tall-2026-2027.md
+/docs/images/
 *.sqlite
 *.sqlite-journal
