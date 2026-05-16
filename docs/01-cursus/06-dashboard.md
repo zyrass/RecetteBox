@@ -218,6 +218,8 @@ Déclare la route dans `routes/web.php` :
 ### Définition des routes
 
 #### routes/web.php
+
+```php
 // Premiere page : la liste (Phase 3)
 Route::livewire('/recettes', 'pages::recipe-index')->name('recipes.index');
 
