@@ -178,23 +178,18 @@ Le **cœur du projet** correspond aux phases 00 à 07. La phase 08 est un emplac
 
 ## Structure du repository
 
-<div align="left">
-
-```mermaid
-treeView-beta
-    "recettebox"
-        "README.md (Ce fichier)"
-        "docs (Documentation pédagogique)"
-            "00-environnement.md"
-            "01-squelette.md (Phase 1)"
-            "..."
-            "07-finitions.md (Phase 7)"
-            "09-bonus-authentification.md (Bonus)"
-        "app (Code Laravel)"
-            "... (Structure standard Laravel)"
+```text
+recettebox/
+├── README.md                         # Ce fichier
+├── docs/                             # Documentation pédagogique phase par phase
+│   ├── 00-environnement.md
+│   ├── 01-squelette.md               # généré en Phase 1
+│   ├── ...
+│   ├── 07-finitions.md               # généré en Phase 7
+│   └── 09-bonus-authentification.md  # bonus
+└── app/                              # Code Laravel (généré à partir de la Phase 1)
+    └── ...                           # Structure standard Laravel
 ```
-
-</div>
 
 Le code Laravel n'existe pas encore. Il sera créé lors de la Phase 1 via `laravel new recettebox`.
 Le contenu du dossier `docs/` est l'ossature pédagogique : il survit aux régénérations du code et constitue le manuel du projet.
