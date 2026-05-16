@@ -141,7 +141,7 @@ erDiagram
 
 Chaque phase introduit volontairement **un seul concept majeur** afin de maintenir une charge cognitive raisonnable. Les outils s'imbriquent dans l'ordre où ils deviennent nécessaires, jamais avant.
 
-Le **cœur du projet** correspond aux phases 00 à 07. La phase 08 est un emplacement réservé pour un module futur (tests automatisés ou déploiement) et n'est pas traitée ici. La **phase 09 est un bonus optionnel** : l'application est pleinement fonctionnelle sans elle.
+Le **cœur du projet** correspond aux phases 00 à 08. La phase 08 introduit les tests automatisés (Pest) de manière simplifiée pour sécuriser le code. La **phase 09 est un bonus optionnel** : l'application est pleinement fonctionnelle sans elle.
 
 | Phase | Intitulé | Concept majeur introduit | Outils ajoutés | Statut |
 |---|---|---|---|---|
@@ -153,7 +153,7 @@ Le **cœur du projet** correspond aux phases 00 à 07. La phase 08 est un emplac
 | 05 | Alpine.js et CRUD | Frontière client/serveur | Alpine `x-data`, modal, validation Livewire | Cœur |
 | 06 | Tableau de bord | Statistiques calculées | Computed properties persistées, composition de composants | Cœur |
 | 07 | Finitions | Polissage UX | Dark mode, `wire:loading`, toasts, transitions | Cœur |
-| 08 | _(réservé)_ | Tests ou déploiement | — | Non traité |
+| 08 | Tests automatisés | Stabilité du code | Pest | Cœur |
 | 09 | **Bonus — Authentification** | Auth, middleware, scoping par utilisateur | Laravel Breeze, relation `User hasMany Recipe`, policies | **Bonus** |
 
 <br>

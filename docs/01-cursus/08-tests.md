@@ -6,7 +6,7 @@
 > [!IMPORTANT]
 > ### Objectif
 > [Contenu en cours de rédaction]
-> Introduire les tests automatisés pour sécuriser les fonctionnalités critiques (CRUD, filtres) et garantir que les futurs ajouts ne cassent pas l'existant.
+> Découvrir les tests automatisés avec **Pest** de manière pragmatique et simplifiée. L'idée est d'apprendre à créer quelques tests concrets (Feature et Unit) pour sécuriser les fonctionnalités critiques (CRUD, filtres) sans complexité inutile.
 
 <br>
 
