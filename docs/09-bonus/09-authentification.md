@@ -4,10 +4,10 @@
 ![Laravel Breeze](https://img.shields.io/badge/Laravel_Breeze-latest-FF2D20?style=flat-square&logo=laravel)
 
 > [!IMPORTANT]
-> ### 🎯 Objectif
+> ### Objectif
 > Transformer le carnet de recettes partagé en carnets individuels protégés par compte utilisateur, en greffant l'authentification sur une application déjà complète, sans casser le travail des phases 01 à 07.
 
-> Pré-requis strict : les phases 00 à 07 sont terminées et validées. Cette phase est un **bonus optionnel** : RecetteBox fonctionne parfaitement sans elle.
+> Pré-requis strict : les phases du cursus (00 à 03+) sont terminées et validées. Cette phase est un **bonus optionnel** : RecetteBox fonctionne parfaitement sans elle.
 
 <br>
 
@@ -209,7 +209,7 @@ stateDiagram-v2
 
 L'authentification touche au schéma de base de données et aux routes. On isole tout sur une branche dédiée pour pouvoir revenir en arrière sans douleur.
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Se placer dans le projet
 cd $env:USERPROFILE\Documents\Projets\recettebox
@@ -221,7 +221,7 @@ git status
 git checkout -b phase/09-bonus-auth
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 cd ~/Documents/Projets/recettebox
 
@@ -246,7 +246,7 @@ git checkout -b phase/09-bonus-auth
 
 ### Installation du paquet Breeze
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Installer Breeze en dépendance de développement uniquement
 # (le scaffolding n'est utile qu'une fois, en développement)
@@ -257,7 +257,7 @@ composer require laravel/breeze --dev
 php artisan breeze:install blade
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Installer Breeze
 composer require laravel/breeze --dev
@@ -270,7 +270,7 @@ php artisan breeze:install blade
 
 ### Migrations et compilation assets
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Installer les dépendances front ajoutées par Breeze, puis compiler
 npm install
@@ -281,7 +281,7 @@ npm run build
 php artisan migrate
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Dépendances, build et migrations
 npm install
@@ -293,13 +293,13 @@ php artisan migrate
 
 Lance le serveur et teste les écrans :
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Démarre le serveur de développement Laravel
 php artisan serve
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Lancer le serveur
 php artisan serve
@@ -341,13 +341,13 @@ Concept clé à retenir : Breeze n'est **pas un package qui agit en boîte noire
 
 Jusqu'ici, une recette n'appartient à personne. On ajoute la colonne `user_id` à la table `recipes` **existante** (migration de modification, pas de création).
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Générer une migration de modification de la table recipes
 php artisan make:migration add_user_id_to_recipes_table --table=recipes
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Générer la migration de liaison user_id
 php artisan make:migration add_user_id_to_recipes_table --table=recipes
@@ -389,12 +389,12 @@ public function down(): void
 
 ### Exécution de la migration
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 php artisan migrate
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Appliquer la migration
 php artisan migrate
@@ -522,13 +522,13 @@ Le scoping de l'étape 6 empêche d'**afficher** les recettes d'autrui, mais pas
 
 ### Génération de la Policy Recipe
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Générer une policy liée au modèle Recipe
 php artisan make:policy RecipePolicy --model=Recipe
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Générer la policy
 php artisan make:policy RecipePolicy --model=Recipe
@@ -679,4 +679,5 @@ Si un jour tu repars d'un projet neuf et veux la voie recommandée par Laravel a
 
 <br>
 
-> Fin du parcours RecetteBox. Le cœur (phases 00-07) constitue le socle ; ce bonus montre comment l'authentification se greffe proprement sur une application déjà saine, plutôt que d'être un pré-requis imposé dès la première ligne.
+> Phase précédente : [03-livewire.md](../01-cursus/03-livewire.md)
+> Fin du parcours RecetteBox. Le cœur (phases 00-03+) constitue le socle ; ce bonus montre comment l'authentification se greffe proprement sur une application déjà saine, plutôt que d'être un pré-requis imposé dès la première ligne.

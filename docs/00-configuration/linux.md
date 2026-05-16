@@ -4,7 +4,7 @@
 ![PHP](https://img.shields.io/badge/PHP-8.4-777BB4?style=flat-square&logo=php)
 
 > [!IMPORTANT]
-> ### 🎯 Objectif
+> ### Objectif
 > Préparer un environnement de développement Laravel sur Linux (Ubuntu, Debian, Fedora, etc.) en utilisant les dépôts officiels ou la méthode simplifiée `php.new`.
 
 <br>
@@ -45,9 +45,27 @@ sudo apt update && sudo apt upgrade -y
 
 <br>
 
-## Étape 2 — Installer PHP et ses dépendances
+## Étape 2 — Installer l'environnement (Méthode Recommandée)
 
-Laravel a besoin de PHP 8.3+ et de plusieurs extensions.
+La méthode **php.new** est le moyen le plus simple sur Linux. Elle installe PHP, Composer et l'installeur Laravel dans un environnement isolé sans modifier vos fichiers système.
+
+### 🐧 Terminal Linux
+```bash
+# Installation automatique de PHP, Composer et Laravel CLI
+/bin/bash -c "$(curl -fsSL https://php.new/install/linux)"
+```
+
+*Note : À la fin de l'installation, fermez et rouvrez votre terminal pour activer les commandes.*
+
+<br>
+
+---
+
+<br>
+
+## Étape 2 bis — Méthode Traditionnelle (Puriste)
+
+Si vous préférez gérer vos paquets manuellement via `apt` (sur Debian/Ubuntu), suivez ces étapes.
 
 ### 🐧 Terminal (Debian/Ubuntu)
 ```bash
@@ -65,9 +83,9 @@ sudo apt install php8.4 php8.4-cli php8.4-common php8.4-sqlite3 php8.4-curl php8
 
 <br>
 
-## Étape 3 — Installer Composer et Laravel CLI
+## Étape 3 — Installer Composer et Laravel CLI (Traditionnel)
 
-Composer est le gestionnaire de dépendances de PHP.
+Si vous n'avez pas utilisé la méthode `php.new` à l'étape 2, installez les outils manuellement.
 
 ### 🐧 Terminal Linux
 ```bash
@@ -150,4 +168,4 @@ code --version
 
 > [!NOTE]
 > ### Prochaine étape
-> Ton environnement est prêt. Tu peux maintenant passer à la [Phase 1 — Squelette Laravel](./01-squelette.md).
+> Ton environnement est prêt. Tu peux maintenant passer à la [Phase 1 — Squelette Laravel](../01-cursus/01-squelette.md).

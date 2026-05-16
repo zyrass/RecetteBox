@@ -4,10 +4,10 @@
 ![Laravel](https://img.shields.io/badge/Laravel-13.x-FF2D20?style=flat-square&logo=laravel)
 
 > [!IMPORTANT]
-> ### 🎯 Objectif
+> ### Objectif
 > Créer le projet Laravel 13, comprendre le cycle requête-réponse, et afficher une première liste de recettes **en dur**, sans base de données, sans Livewire, sans Tailwind. On isole le patron MVC avant d'y greffer la moindre couche réactive.
 
-> Pré-requis strict : la Phase 0 est terminée et validée. Le dossier `recettebox/` existe, contient `README.md` + `docs/`, est sous Git, branche `phase/00-environnement`.
+> Pré-requis strict : la Phase 0 est terminée et validée ([guide Windows](../00-configuration/windows11.md)). Le dossier `recettebox/` existe, contient `README.md` + `docs/`, est sous Git, branche `phase/00-environnement`.
 
 <br>
 
@@ -195,7 +195,7 @@ Problème annoncé en fin de Phase 0 : `laravel new recettebox` veut créer un d
 
 ### Création du projet temporaire
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Se placer dans le dossier PARENT du projet (pas dans recettebox/)
 cd $env:USERPROFILE\Documents\Projets
@@ -204,7 +204,7 @@ cd $env:USERPROFILE\Documents\Projets
 laravel new recettebox-tmp
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Se placer dans le dossier PARENT du projet
 cd ~/Documents/Projets
@@ -226,7 +226,7 @@ Une fois `Application ready!` affiché, fusionne le projet généré dans ton re
 
 ### Fusion des fichiers avec robocopy
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Copier tout le contenu de recettebox-tmp DANS recettebox,
 # SANS ecraser le dossier .git ni la documentation existante.
@@ -241,7 +241,7 @@ Remove-Item -Recurse -Force recettebox-tmp
 cd recettebox
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Copier le contenu (rsync est recommandé car il préserve les permissions)
 rsync -av --exclude='.git' recettebox-tmp/ recettebox/
@@ -257,14 +257,14 @@ Vérifie que rien n'a été écrasé :
 
 ### Vérification de la structure du repository
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # README.md et docs/ doivent toujours etre la, AINSI QUE
 # la nouvelle arborescence Laravel (app, routes, resources, etc.)
 git status
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Vérifier la présence des nouveaux fichiers Laravel
 git status
@@ -274,7 +274,7 @@ Git va lister une grande quantité de nouveaux fichiers (tout Laravel). C'est at
 
 ### Premier commit du squelette Laravel
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Basculer sur la branche de la Phase 1
 git checkout -b phase/01-squelette
@@ -284,7 +284,7 @@ git add .
 git commit -m "feat: generer le squelette Laravel 13 (sqlite, sans starter kit)"
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Basculer sur la branche
 git checkout -b phase/01-squelette
@@ -324,14 +324,14 @@ Vérifie que la connexion répond :
 
 ### Vérification de la base de données
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Doit afficher la liste des tables systeme deja migrees,
 # preuve que SQLite est operationnel
 php artisan db:show
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Vérifier la connexion SQLite
 php artisan db:show
@@ -347,14 +347,14 @@ php artisan db:show
 
 ### Lancement du serveur de développement
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Demarre le serveur de developpement integre de Laravel
 # Accessible sur http://127.0.0.1:8000
 php artisan serve
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Demarrer le serveur
 php artisan serve
@@ -450,13 +450,13 @@ Recharge `http://127.0.0.1:8000/recettes`. Tu dois voir le texte. Tu viens de pr
 
 ### Génération du RecipeController
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Genere app/Http/Controllers/RecipeController.php
 php artisan make:controller RecipeController
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Générer le contrôleur
 php artisan make:controller RecipeController
@@ -536,13 +536,13 @@ La route renvoie `view('recipes.index', ...)`, mais ce fichier n'existe pas enco
 
 ### Création du dossier des vues
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Cree le sous-dossier des vues de recettes
 mkdir resources\views\recipes
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Créer le dossier des vues
 mkdir -p resources/views/recipes
@@ -712,13 +712,13 @@ Vérifie que la route nommée est bien enregistrée :
 
 ### Liste des routes enregistrées
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Liste toutes les routes ; tu dois voir la colonne Name = recipes.index
 php artisan route:list
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Vérifier les routes
 php artisan route:list
@@ -730,13 +730,13 @@ Commit final de la phase :
 
 ### Finalisation de la Phase 1
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 git add .
 git commit -m "feat: MVC nu pour la liste des recettes (route nommee, controleur, vue, layout)"
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Finalisation
 git add .
@@ -806,4 +806,5 @@ Tu n'as **pas** touché à la base de données métier ni à Livewire. C'est vol
 
 <br>
 
-> Phase suivante : `02-modele.md` — migrations, modèle Eloquent `Recipe`, enum PHP 8.3 pour `category` et `difficulty`, factory et seeder pour disposer de 30 recettes réalistes.
+> Phase précédente : [00-configuration/windows11.md](../00-configuration/windows11.md)
+> Phase suivante : [02-modele.md](02-modele.md) — migrations, modèle Eloquent `Recipe`, enum PHP 8.3 pour `category` et `difficulty`, factory et seeder pour disposer de 30 recettes réalistes.

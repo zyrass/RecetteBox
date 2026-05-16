@@ -6,10 +6,10 @@
 ![SQLite](https://img.shields.io/badge/SQLite-3.x-003B57?style=flat-square&logo=sqlite)
 
 > [!IMPORTANT]
-> ### 🎯 Objectif
+> ### Objectif
 > Remplacer le tableau de recettes codé en dur dans le contrôleur (Phase 1) par une vraie persistance SQLite, via une migration, un modèle Eloquent, des enums PHP 8.3, une factory et un seeder. À la fin, 30 recettes réalistes sont en base et s'affichent sans changer la route ni la vue dans leur structure.
 
-> Pré-requis strict : la Phase 1 est terminée et validée. La page `/recettes` affiche les 4 recettes en dur via `RecipeController@index`.
+> Pré-requis strict : la [Phase 1 — Squelette Laravel](./01-squelette.md) est terminée et validée. La page `/recettes` affiche les 4 recettes en dur via `RecipeController@index`.
 
 <br>
 
@@ -254,7 +254,7 @@ flowchart TD
 
 ### Initialisation de la Phase 2
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 cd $env:USERPROFILE\Documents\Projets\recettebox
 
@@ -265,7 +265,7 @@ git status
 git checkout -b phase/02-modele
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 cd ~/Documents/Projets/recettebox
 
@@ -290,12 +290,12 @@ Crée le dossier et le fichier `app/Enums/RecipeCategory.php` :
 
 ### Création du dossier Enums
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 mkdir app\Enums
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Créer le dossier Enums
 mkdir -p app/Enums
@@ -376,13 +376,13 @@ enum RecipeDifficulty: string
 
 ### Génération de la migration recipes
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Genere une migration de CREATION de table
 php artisan make:migration create_recipes_table
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Générer la migration
 php artisan make:migration create_recipes_table
@@ -443,13 +443,13 @@ public function down(): void
 
 ### Génération des migrations tags et pivot
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 php artisan make:migration create_tags_table
 php artisan make:migration create_recipe_tag_table
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Générer les migrations tags et pivot
 php artisan make:migration create_tags_table
@@ -513,13 +513,13 @@ public function down(): void
 
 ### Exécution de `php artisan migrate`
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Applique toutes les migrations non encore executees
 php artisan migrate
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Exécuter les migrations
 php artisan migrate
@@ -529,7 +529,7 @@ Vérifie le schéma :
 
 ### Vérification du schéma SQL
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Apercu de la table recipes : colonnes, types, index
 php artisan db:table recipes
@@ -538,7 +538,7 @@ php artisan db:table recipes
 php artisan db:show
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Vérifier le schéma
 php artisan db:table recipes
@@ -555,12 +555,12 @@ php artisan db:show
 
 ### Génération du modèle Recipe
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 php artisan make:model Recipe
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Générer le modèle Recipe
 php artisan make:model Recipe
@@ -640,12 +640,12 @@ class Recipe extends Model
 
 ### Génération du modèle Tag
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 php artisan make:model Tag
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Générer le modèle Tag
 php artisan make:model Tag
@@ -692,13 +692,13 @@ class Tag extends Model
 
 Une factory décrit comment fabriquer une instance crédible du modèle. Pour des titres réalistes plutôt que des mots aléatoires, on pioche dans une liste de vraies recettes.
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 php artisan make:factory RecipeFactory
 php artisan make:factory TagFactory
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Générer les factories
 php artisan make:factory RecipeFactory
@@ -842,14 +842,14 @@ Exécute le peuplement :
 
 ### Migration fresh et seeding
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # migrate:fresh DETRUIT et recree tout le schema, puis --seed lance le seeder.
 # En developpement, c'est la commande de reset propre.
 php artisan migrate:fresh --seed
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Reset global et seeding
 php artisan migrate:fresh --seed
@@ -859,12 +859,12 @@ Vérifie en base sans écrire de code, via le REPL Tinker :
 
 ### Ouverture de Tinker
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 php artisan tinker
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Lancer Tinker
 php artisan tinker
@@ -983,13 +983,13 @@ Recharge `http://127.0.0.1:8000/recettes` (relance `php artisan serve` si besoin
 
 Commit de la phase :
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 git add .
 git commit -m "feat: persistance Eloquent (migrations, enums, modeles, factory, seeder)"
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Finalisation Phase 2
 git add .
@@ -1064,4 +1064,5 @@ La Phase 3 introduira **deux outils en même temps**, pour la première et seule
 
 <br>
 
-> Phase suivante : `03-livewire.md` — installation de Tailwind 4 via `@tailwindcss/vite`, installation de Livewire 4, conversion de la liste statique en premier Single-File Component, sur exactement les mêmes données.
+> Phase précédente : [01-squelette.md](01-squelette.md)
+> Phase suivante : [03-livewire.md](03-livewire.md) — installation de Tailwind 4 via `@tailwindcss/vite`, installation de Livewire 4, conversion de la liste statique en premier Single-File Component, sur exactement les mêmes données.

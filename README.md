@@ -71,10 +71,10 @@ _Une **phase bonus optionnelle** ajoute ensuite l'authentification (Laravel Bree
 | OS de développement | Windows 11 | - | Cible documentée |
 
 > [!TIP]
-> ### 🍎 macOS & 🐧 Linux
+> ### macOS & Linux
 > Bien que ce projet soit né sous Windows 11, il est 100% compatible avec macOS et Linux. Nous fournissons désormais des guides d'installation dédiés :
-> - [🍎 Guide d'environnement macOS (Laravel Herd)](./docs/00-environnement-macos.md)
-> - [🐧 Guide d'environnement Linux (php.new)](./docs/00-environnement-linux.md)
+> - [Guide d'environnement macOS (Laravel Herd)](./docs/00-configuration/macos.md)
+> - [Guide d'environnement Linux (php.new)](./docs/00-configuration/linux.md)
 
 <br>
 
@@ -162,12 +162,12 @@ Le **cœur du projet** correspond aux phases 00 à 07. La phase 08 est un emplac
 
 | Phase | Guide | État |
 |---|---|---|
-| Phase 00 | [docs/00-environnement.md](docs/00-environnement.md) | ✅ Prêt |
-| Phase 01 | [docs/01-squelette.md](docs/01-squelette.md) | ✅ Prêt |
-| Phase 02 | [docs/02-modele.md](docs/02-modele.md) | ✅ Prêt |
-| Phase 03 | [docs/03-livewire.md](docs/03-livewire.md) | ✅ Prêt |
-| Phases 04 à 07 | _Générées durant le cursus_ | 🏗️ En cours |
-| Phase 09 (bonus) | [docs/09-bonus-authentification.md](docs/09-bonus-authentification.md) | 🎁 Bonus |
+| Phase 00 | [docs/00-configuration/windows11.md](docs/00-configuration/windows11.md) | Prêt |
+| Phase 01 | [docs/01-cursus/01-squelette.md](docs/01-cursus/01-squelette.md) | Prêt |
+| Phase 02 | [docs/01-cursus/02-modele.md](docs/01-cursus/02-modele.md) | Prêt |
+| Phase 03 | [docs/01-cursus/03-livewire.md](docs/01-cursus/03-livewire.md) | Prêt |
+| Phases 04 à 07 | _Générées durant le cursus_ | En cours |
+| Phase 09 (bonus) | [docs/09-bonus/09-authentification.md](docs/09-bonus/09-authentification.md) | Bonus |
 
 <br>
 
@@ -180,12 +180,10 @@ Le **cœur du projet** correspond aux phases 00 à 07. La phase 08 est un emplac
 ```text
 recettebox/
 ├── README.md                         # Ce fichier
-├── docs/                             # Documentation pédagogique phase par phase
-│   ├── 00-environnement.md
-│   ├── 01-squelette.md               # généré en Phase 1
-│   ├── ...
-│   ├── 07-finitions.md               # généré en Phase 7
-│   └── 09-bonus-authentification.md  # bonus
+├── docs/                             # Documentation pédagogique par dossiers
+│   ├── 00-configuration/             # OS (Windows, Mac, Linux)
+│   ├── 01-cursus/                    # Phases 01 à 07
+│   └── 09-bonus/                     # Phases bonus
 └── app/                              # Code Laravel (généré à partir de la Phase 1)
     └── ...                           # Structure standard Laravel
 ```
@@ -218,7 +216,7 @@ Le contenu du dossier `docs/` est l'ossature pédagogique : il survit aux régé
 
 ## Démarrage
 
-Commence par lire et exécuter [`docs/00-environnement.md`](docs/00-environnement.md). Tu n'écris aucune ligne de code Laravel avant que la Phase 0 ne soit entièrement validée. La phase bonus d'authentification ([`docs/09-bonus-authentification.md`](docs/09-bonus-authentification.md)) ne doit être abordée qu'une fois les phases 01 à 07 terminées.
+Commence par lire et exécuter [`docs/00-configuration/windows11.md`](docs/00-configuration/windows11.md). Tu n'écris aucune ligne de code Laravel avant que la Phase 0 ne soit entièrement validée. La phase bonus d'authentification ([`docs/09-bonus/09-authentification.md`](docs/09-bonus/09-authentification.md)) ne doit être abordée qu'une fois les phases 01 à 07 terminées.
 
 <br>
 

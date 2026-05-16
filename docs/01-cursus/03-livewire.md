@@ -5,10 +5,10 @@
 ![Livewire](https://img.shields.io/badge/Livewire-4.x-FB70A9?style=flat-square&logo=livewire)
 
 > [!IMPORTANT]
-> ### 🎯 Objectif
+> ### Objectif
 > Installer Tailwind 4 puis Livewire 4, et convertir la liste statique de la Phase 2 en un composant full-stack (Single-File Component), sur exactement les mêmes données. Aucune interactivité ici : la recherche et les filtres arrivent en Phase 4. Cette phase concerne la mécanique du composant et le style, pas la réactivité.
 
-> Pré-requis strict : la Phase 2 est terminée. `/recettes` affiche 30 recettes réelles via `RecipeController@index`, sans style.
+> Pré-requis strict : la [Phase 2 — Modèle de données](./02-modele.md) est terminée. `/recettes` affiche 30 recettes réelles via `RecipeController@index`, sans style.
 
 <br>
 
@@ -188,7 +188,7 @@ flowchart TD
 
 ### Initialisation de la Phase 3
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 cd $env:USERPROFILE\Documents\Projets\recettebox
 
@@ -199,7 +199,7 @@ git status
 git checkout -b phase/03-livewire
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 cd ~/Documents/Projets/recettebox
 
@@ -222,13 +222,13 @@ Le projet ayant été créé **sans starter kit**, Tailwind n'est pas présent. 
 
 ### Installation de Tailwind CSS 4
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Installe Tailwind 4 et son plugin Vite officiel
 npm install tailwindcss @tailwindcss/vite
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Installer Tailwind 4
 npm install tailwindcss @tailwindcss/vite
@@ -274,13 +274,13 @@ Lance le serveur de build Vite. Il doit rester actif en parallèle de `php artis
 
 ### Lancement de Vite
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Compile les assets et surveille les changements en continu
 npm run dev
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Lancer Vite
 npm run dev
@@ -304,12 +304,12 @@ Livewire 4 cherche par défaut son layout dans `resources/views/components/layou
 
 ### Création du dossier de layout Livewire
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 mkdir resources\views\components\layouts
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Créer le dossier de layout Livewire
 mkdir -p resources/views/components/layouts
@@ -353,13 +353,13 @@ Tu peux conserver l'ancien `resources/views/layouts/app.blade.php` de la Phase 1
 
 ### Installation de Livewire 4
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Installe le paquet Livewire 4
 composer require livewire/livewire
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Installer Livewire 4
 composer require livewire/livewire
@@ -371,13 +371,13 @@ Vérifie la version installée :
 
 ### Vérification de Livewire
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Doit afficher Livewire dans la section "Livewire" avec une version 4.x
 php artisan about
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Vérifier Livewire
 php artisan about
@@ -395,13 +395,13 @@ php artisan about
 
 Livewire 4 préfixe par défaut les fichiers de composants d'un caractère éclair (`⚡`). C'est purement cosmétique et désactivable. On le désactive pour garder des noms de fichiers sobres et sans caractère spécial.
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Publie le fichier de configuration de Livewire
 php artisan livewire:publish --config
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Publier la config Livewire
 php artisan livewire:publish --config
@@ -431,14 +431,14 @@ Ouvre `config/livewire.php` et règle l'option de génération pour ne pas utili
 
 On crée un composant **page** (full-page), dans le namespace `pages::` introduit par Livewire 4.
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Genere un Single-File Component de page nomme recipe-index.
 # Selon la version, le fichier sera place sous resources/views/pages/.
 php artisan make:livewire pages.recipe-index
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Générer le composant
 php artisan make:livewire pages.recipe-index
@@ -636,7 +636,7 @@ Assure-toi que `npm run dev` tourne. Recharge la page : grille de cartes respons
 
 ### Commit de la Phase 3
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Ajouter les fichiers modifices
 git add .
@@ -648,7 +648,7 @@ git diff --cached
 git commit -m "feat: Tailwind 4 + Livewire 4, liste de recettes en Single-File Component"
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Finalisation Phase 3
 git add .
@@ -676,7 +676,7 @@ Pour ce parcours, on supprime le contrôleur d'index : la logique vit désormais
 
 ### Nettoyage du contrôleur obsolète
 
-#### 🪟 Windows (PowerShell)
+#### Windows (PowerShell)
 ```powershell
 # Supprime le controleur devenu inutile
 Remove-Item app\Http\Controllers\RecipeController.php
@@ -687,7 +687,7 @@ git add .
 git commit -m "refactor: supprimer RecipeController, remplace par le composant Livewire"
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### macOS / Linux (Terminal)
 ```bash
 # Supprimer le contrôleur obsolète
 rm app/Http/Controllers/RecipeController.php
@@ -767,4 +767,5 @@ La Phase 4 exploitera enfin la moitié droite du diagramme de cycle de vie (hydr
 
 <br>
 
-> Phase suivante : `04-reactivite.md` — `wire:model.live`, filtres dynamiques (catégorie, difficulté, favoris), tri, et pagination Livewire, en transformant le composant `recipe-index` actuel sans le réécrire.
+> Phase précédente : [02-modele.md](02-modele.md)
+> Phase suivante : [04-reactivite.md](04-reactivite.md) — `wire:model.live`, filtres dynamiques (catégorie, difficulté, favoris), tri, et pagination Livewire, en transformant le composant `recipe-index` actuel sans le réécrire.

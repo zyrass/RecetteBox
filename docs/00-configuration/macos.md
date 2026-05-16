@@ -4,7 +4,7 @@
 ![Laravel Herd](https://img.shields.io/badge/Laravel_Herd-latest-FF2D20?style=flat-square&logo=laravel)
 
 > [!IMPORTANT]
-> ### 🎯 Objectif
+> ### Objectif
 > Préparer un environnement de développement professionnel sur macOS en utilisant **Laravel Herd**, le standard moderne qui permet d'installer PHP, Nginx et Node.js en quelques secondes sans aucune configuration manuelle.
 
 <br>
@@ -135,4 +135,4 @@ code --version
 
 > [!NOTE]
 > ### Prochaine étape
-> Ton environnement est prêt. Tu peux maintenant passer à la [Phase 1 — Squelette Laravel](./01-squelette.md).
+> Ton environnement est prêt. Tu peux maintenant passer à la [Phase 1 — Squelette Laravel](../01-cursus/01-squelette.md).

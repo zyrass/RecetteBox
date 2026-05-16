@@ -1,14 +1,14 @@
 # Phase 0 — Préparation de l'environnement Windows 11
 
 > [!IMPORTANT]
-> ### 🎯 Objectif
+> ### Objectif
 > Disposer d'un poste de travail capable de compiler, exécuter et servir une application Laravel 13 + Livewire 4 + Tailwind 4, sans Docker ni WSL, avec une empreinte mémoire minimale.
 
 > [!TIP]
-> ### 💻 Autre système ?
+> ### Autre système ?
 > Ce guide concerne **Windows 11**. Si vous utilisez un autre OS, consultez nos guides dédiés :
-> *   [🍎 Guide macOS (Laravel Herd)](./00-environnement-macos.md)
-> *   [🐧 Guide Linux (php.new)](./00-environnement-linux.md)
+> *   [Guide macOS (Laravel Herd)](./macos.md)
+> *   [Guide Linux (php.new)](./linux.md)
 
 <br>
 
@@ -464,4 +464,4 @@ Tu n'as **rien écrit en PHP** à ce stade. C'est volontaire. La Phase 1 commenc
 
 <br>
 
-> Phase suivante : [01-squelette.md](01-squelette.md) — création du projet Laravel 13, premier itinéraire MVC sans Livewire, prise en main de la structure de fichiers.
+> Phase suivante : [01-squelette.md](../01-cursus/01-squelette.md) — création du projet Laravel 13, premier itinéraire MVC sans Livewire, prise en main de la structure de fichiers.
