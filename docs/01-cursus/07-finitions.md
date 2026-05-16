@@ -111,6 +111,8 @@ _Ce schéma d'état détaille la logique de bascule entre les modes clair et som
 
 <br>
 
+## Diagramme de séquence : un toast après enregistrement
+
 La gestion des notifications repose sur une communication asynchrone entre le serveur et le client. Ce diagramme de séquence montre l'importance du découpage des responsabilités : le serveur décide du message, le client gère l'affichage animé.
 
 ```mermaid
@@ -139,6 +141,8 @@ _Cette séquence décrit le cycle de vie d'une notification, depuis le déclench
 ---
 
 <br>
+
+## Flux de la phase
 
 Avant de plonger dans le code, voici la roadmap visuelle de cette phase finale. Ce flux permet de garder une vue d'ensemble sur l'ordre logique d'implémentation des finitions UX.
 
