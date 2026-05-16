@@ -77,7 +77,6 @@ _Une **phase bonus optionnelle** ajoute ensuite l'authentification (Laravel Bree
 > - PHP 8.4+ et Node 22+ sont requis.
 > - SQLite est généralement pré-installé nativement.
 
-
 <br>
 
 ---
@@ -106,14 +105,16 @@ erDiagram
         string source_url "Lien source, nullable"
         boolean is_favorite "Favori oui/non"
         text notes "Notes personnelles, nullable"
-        timestamps
+        datetime created_at
+        datetime updated_at
     }
 
     TAGS {
         int id PK
         string name "ex: vegetarien, vegan, sans gluten, rapide"
         string slug
-        timestamps
+        datetime created_at
+        datetime updated_at
     }
 
     RECIPE_TAG {
@@ -126,7 +127,8 @@ erDiagram
         string name
         string email
         string password "hache"
-        timestamps
+        datetime created_at
+        datetime updated_at
     }
 ```
 
@@ -207,7 +209,7 @@ Le contenu du dossier `docs/` est l'ossature pédagogique : il survit aux régé
 | Pas de saut de phase | Chaque phase suppose acquise la précédente |
 | Le bonus est isolé | La phase 09 se fait sur une branche dédiée, jamais fusionnée tant que le cœur n'est pas stable |
 | Vérifications obligatoires | À la fin de chaque phase, une checklist `## Vérifications` doit être verte avant de passer à la suivante |
-| Pièges documentés | Chaque phase liste les erreurs courantes constatées sur Windows 11 |
+| Pièges documentés | Chaque phase liste les erreurs courantes constatées on Windows 11 |
 
 <br>
 
@@ -218,6 +220,7 @@ Le contenu du dossier `docs/` est l'ossature pédagogique : il survit aux régé
 ## Démarrage
 
 Commence par lire et exécuter [`docs/00-environnement.md`](docs/00-environnement.md). Tu n'écris aucune ligne de code Laravel avant que la Phase 0 ne soit entièrement validée. La phase bonus d'authentification ([`docs/09-bonus-authentification.md`](docs/09-bonus-authentification.md)) ne doit être abordée qu'une fois les phases 01 à 07 terminées.
+
 <br>
 
 ---
