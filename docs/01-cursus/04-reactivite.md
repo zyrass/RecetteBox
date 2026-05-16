@@ -8,19 +8,18 @@
 > Rendre la liste de recettes interactive en enrichissant le composant `recipe-index` de la Phase 3, sans le réécrire. Recherche en temps réel, filtres par catégorie / difficulté / favoris, tri, pagination, et filtres partageables via l'URL. C'est ici qu'on exploite la moitié droite du cycle de vie Livewire vue en Phase 3.
 
 > Pré-requis strict : la [Phase 3 — Premier composant Livewire](./03-livewire.md) est terminée. `/recettes` affiche une grille de cartes stylée, produite par le Single-File Component `recipe-index`, sans aucune interaction.
-
 <br>
 
 ---
 
 <br>
-
 > Phase précédente : [03-livewire.md](./03-livewire.md)
 > Phase suivante : [05-crud-alpine.md](./05-crud-alpine.md)
-
 <br>
 
 ---
+
+<br>
 
 ## Sommaire
 
@@ -43,7 +42,11 @@
 - [Pièges courants](#pièges-courants)
 - [Ce que tu as à la fin de cette phase](#ce-que-tu-as-à-la-fin-de-cette-phase)
 
+<br>
+
 ---
+
+<br>
 
 ## Le lien avec la Phase 3
 
@@ -59,7 +62,11 @@ public function recipes()
 
 En Phase 4, **cette même méthode** devient le point d'application de tous tes filtres. La requête se construit dynamiquement selon des propriétés publiques pilotées par l'interface. Tu n'ajoutes pas un nouveau composant : tu fais vivre celui qui existe.
 
+<br>
+
 ---
+
+<br>
 
 ## Concepts introduits dans cette phase
 
@@ -74,7 +81,11 @@ En Phase 4, **cette même méthode** devient le point d'application de tous tes 
 | `resetPage()` + hook `updated()` | Revenir page 1 quand un filtre change | Nouveau |
 | `wire:click` | Déclencher une méthode du composant | Nouveau |
 
+<br>
+
 ---
+
+<br>
 
 ## La boucle réactive de Livewire
 
@@ -106,7 +117,11 @@ stateDiagram-v2
     end note
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Diagramme de séquence : une frappe dans le champ de recherche
 
@@ -131,7 +146,11 @@ sequenceDiagram
     DOM-->>U: liste filtrée affichée
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Flux de la phase
 
@@ -158,7 +177,11 @@ flowchart TD
     style Debug fill:#1f2937,stroke:#ef4444,color:#f3f4f6
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 1 — Brancher
 
@@ -178,7 +201,11 @@ git status
 git checkout -b phase/04-reactivite
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 2 — Recherche en temps réel
 
@@ -250,7 +277,11 @@ Recharge, tape dans le champ : ta liste se filtre sans rechargement de page. La 
 
 > Différence `wire:model` seul vs `wire:model.live` : sans `.live`, la propriété ne se synchronise qu'à un événement déclencheur (soumission, perte de focus selon le cas). Avec `.live`, chaque changement déclenche une requête. Pour une recherche, on veut `.live` ; pour un formulaire de création (Phase 5), on voudra l'inverse.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 3 — Le piège wire:model de Livewire 4
 
@@ -275,7 +306,11 @@ Conséquence : si tu places `wire:model` sur un conteneur englobant un `<input>`
 
 Dans RecetteBox, toutes nos directives sont posées directement sur les champs : `.deep` n'est pas nécessaire. Mais connaître ce piège évite des heures de débogage si tu réutilises du code Livewire 3 ailleurs.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 4 — Filtres catégorie, difficulté, favoris
 
@@ -377,7 +412,11 @@ public function difficulties()
 </div>
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 5 — Rendre les filtres partageables via l'URL
 
@@ -409,7 +448,11 @@ public bool $onlyFavorites = false;
 
 Teste : applique des filtres, observe l'URL changer, recharge la page. Les filtres persistent. Copie l'URL dans un autre onglet : même résultat filtré.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 6 — Tri
 
@@ -472,7 +515,11 @@ Intègre le tri dans la requête de `recipes()`, en remplaçant `->latest()` :
 
 > `wire:click="sortBy('title')"` appelle directement la méthode PHP du composant, avec un argument. Aucune ligne de JavaScript écrite.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 7 — Pagination
 
@@ -539,7 +586,11 @@ class extends Component {
 
 > Pourquoi `resetPage()` est indispensable : sans lui, un utilisateur en page 4 qui tape une recherche verrait la page 4 d'un résultat qui n'a peut-être qu'une page. Le hook `updated()` corrige ça globalement, sans dupliquer la logique pour chaque filtre.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 8 — Réinitialisation et compteur de résultats
 
@@ -576,7 +627,11 @@ public function resetFilters(): void
 </div>
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 9 — Styliser la barre de filtres
 
@@ -628,7 +683,11 @@ git add .
 git commit -m "feat: recherche temps reel, filtres, tri, pagination, filtres dans l URL"
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Le composant complet de cette phase
 
@@ -718,7 +777,11 @@ class extends Component {
 ?>
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Vérifications finales
 
@@ -735,7 +798,11 @@ class extends Component {
 - [ ] Aucune requête N+1 : `with('tags')` toujours présent
 - [ ] Commits de la Phase 4 sur la branche `phase/04-reactivite`
 
+<br>
+
 ---
+
+<br>
 
 ## Pièges courants
 
@@ -753,7 +820,11 @@ class extends Component {
 | Filtre catégorie sans effet | Comparaison enum/chaîne incohérente | Le filtre doit comparer la **valeur** de l'enum (chaîne stockée), pas l'objet enum |
 | Page lente avec beaucoup de données | Tri sur colonne non indexée | Acceptable à cette échelle ; un index sera pertinent si le volume grandit |
 
+<br>
+
 ---
+
+<br>
 
 ## Ce que tu as à la fin de cette phase
 
@@ -772,6 +843,13 @@ Ta page est désormais réellement utile : on retrouve une recette en quelques s
 
 La Phase 5 introduira le dernier outil de la stack TALL encore absent : **Alpine.js**. Il arrive précisément quand Livewire seul ne suffit plus — ouvrir et fermer une fenêtre modale est un comportement purement client, sans aller-retour serveur. On construira un formulaire de création/édition dans une modal Alpine, avec validation Livewire côté serveur. La frontière Livewire / Alpine annoncée dès le README prend alors tout son sens.
 
+<br>
+
 ---
 
+<br>
+
 > Phase suivante : `05-crud-alpine.md` — Alpine.js (`x-data`, `x-show`, `x-transition`), modal de création/édition, validation Livewire avec `#[Validate]`, suppression avec confirmation. La frontière client/serveur en pratique.
+
+<br>
+

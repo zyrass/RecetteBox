@@ -86,7 +86,7 @@ La route ne change pas. La vue ne change que dans le détail d'accès aux propri
 | Migration | Décrire le schéma de base en PHP, versionné | Nouveau |
 | Enum PHP 8.3 *backed* | Restreindre `category` et `difficulty` à des valeurs valides | Nouveau |
 | Modèle Eloquent | Représenter une table comme une classe PHP | Nouveau |
-| Cast | Convertir automatiquement colonne ↔ type PHP (enum, booléen) | Nouveau |
+| Cast | Convertir automatiquement colonne â†” type PHP (enum, booléen) | Nouveau |
 | Assignation de masse (`$fillable`) | Autoriser explicitement les colonnes remplissables | Nouveau |
 | Relation `belongsToMany` | Lier recettes et étiquettes via une table pivot | Nouveau |
 | Factory | Générer des données de test crédibles | Nouveau |
@@ -724,7 +724,7 @@ class RecipeFactory extends Factory
     {
         // Liste de vrais noms de recettes pour un rendu credible.
         $titres = [
-            'Soupe de potiron', 'Bœuf bourguignon', 'Tarte aux pommes',
+            'Soupe de potiron', 'BÅ“uf bourguignon', 'Tarte aux pommes',
             'Houmous maison', 'Risotto aux champignons', 'Quiche lorraine',
             'Ratatouille', 'Curry de lentilles', 'Gratin dauphinois',
             'Salade César', 'Chili sin carne', 'Crêpes sucrées',
@@ -1066,3 +1066,6 @@ La Phase 3 introduira **deux outils en même temps**, pour la première et seule
 
 > Phase précédente : [01-squelette.md](01-squelette.md)
 > Phase suivante : [03-livewire.md](03-livewire.md) — installation de Tailwind 4 via `@tailwindcss/vite`, installation de Livewire 4, conversion de la liste statique en premier Single-File Component, sur exactement les mêmes données.
+
+<br>
+

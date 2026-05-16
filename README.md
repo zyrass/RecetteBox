@@ -158,6 +158,10 @@ Le **cœur du projet** correspond aux phases 00 à 08. La phase 08 introduit les
 
 <br>
 
+---
+
+<br>
+
 ### Accès aux guides détaillés
 
 | Phase | Guide | État |
@@ -166,10 +170,10 @@ Le **cœur du projet** correspond aux phases 00 à 08. La phase 08 introduit les
 | Phase 01 | [docs/01-cursus/01-squelette.md](docs/01-cursus/01-squelette.md) | Prêt |
 | Phase 02 | [docs/01-cursus/02-modele.md](docs/01-cursus/02-modele.md) | Prêt |
 | Phase 03 | [docs/01-cursus/03-livewire.md](docs/01-cursus/03-livewire.md) | Prêt |
-| Phase 04 | [docs/01-cursus/04-reactivite.md](docs/01-cursus/04-reactivite.md) | À faire |
-| Phase 05 | [docs/01-cursus/05-crud-alpine.md](docs/01-cursus/05-crud-alpine.md) | À faire |
-| Phase 06 | [docs/01-cursus/06-dashboard.md](docs/01-cursus/06-dashboard.md) | À faire |
-| Phase 07 | [docs/01-cursus/07-finitions.md](docs/01-cursus/07-finitions.md) | À faire |
+| Phase 04 | [docs/01-cursus/04-reactivite.md](docs/01-cursus/04-reactivite.md) | Prêt |
+| Phase 05 | [docs/01-cursus/05-crud-alpine.md](docs/01-cursus/05-crud-alpine.md) | Prêt |
+| Phase 06 | [docs/01-cursus/06-dashboard.md](docs/01-cursus/06-dashboard.md) | Prêt |
+| Phase 07 | [docs/01-cursus/07-finitions.md](docs/01-cursus/07-finitions.md) | Prêt |
 | Phase 08 | [docs/01-cursus/08-tests.md](docs/01-cursus/08-tests.md) | À faire |
 | Phase 09 | [docs/09-bonus/09-authentification.md](docs/09-bonus/09-authentification.md) | Bonus |
 
@@ -242,4 +246,19 @@ Commence par lire et exécuter [`docs/00-configuration/windows11.md`](docs/00-co
 
 <br>
 
+## 🏗️ Qualité et Professionnalisme
+
+Pour évaluer la maturité technique du projet et sa pertinence professionnelle :
+
+- [**Audit Complet**](./docs/audit-complet.md) : Rapport détaillé sur l'architecture et la stack TALL.
+- [**Fiabilité Professionnelle**](./docs/fiabilite-professionnelle.md) : Analyse de la valeur métier et des limites du projet.
+
+<br>
+
+---
+
+<br>
+
 **Tags :** `Laravel 13` `TALL Stack` `Livewire 4` `Tailwind CSS 4` `PHP 8.4` `Education` `MacOS` `Linux` `Windows 11`
+
+<br>

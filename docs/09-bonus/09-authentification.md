@@ -599,13 +599,13 @@ public function run(): void
 
 ### Reset global et ré-exécution du seeder
 
-#### 🪟 Windows (PowerShell)
+#### ðŸªŸ Windows (PowerShell)
 ```powershell
 # Recrée le schéma et réinjecte des données cohérentes avec l'auth
 php artisan migrate:fresh --seed
 ```
 
-#### 🍎 macOS / 🐧 Linux (Terminal)
+#### ðŸŽ macOS / ðŸ§ Linux (Terminal)
 ```bash
 # Reset et seeding (auth-ready)
 php artisan migrate:fresh --seed
@@ -681,3 +681,6 @@ Si un jour tu repars d'un projet neuf et veux la voie recommandée par Laravel a
 
 > Phase précédente : [08-tests.md](../01-cursus/08-tests.md)
 > Fin du parcours RecetteBox. Le cœur (phases 00-03+) constitue le socle ; ce bonus montre comment l'authentification se greffe proprement sur une application déjà saine, plutôt que d'être un pré-requis imposé dès la première ligne.
+
+<br>
+

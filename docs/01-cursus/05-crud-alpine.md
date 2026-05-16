@@ -8,19 +8,18 @@
 > Ajouter la création, l'édition et la suppression de recettes en enrichissant le composant `recipe-index` existant. Alpine.js fait son entrée, précisément là où Livewire seul ne suffit plus : l'ouverture et la fermeture d'une fenêtre modale sont des comportements purement client. Le formulaire, lui, reste piloté par Livewire avec validation serveur.
 
 > Pré-requis strict : la [Phase 4 — Réactivité Livewire](./04-reactivite.md) est terminée. `/recettes` propose recherche, filtres, tri et pagination, en lecture seule.
-
 <br>
 
 ---
 
 <br>
-
 > Phase précédente : [04-reactivite.md](./04-reactivite.md)
 > Phase suivante : [06-dashboard.md](./06-dashboard.md)
-
 <br>
 
 ---
+
+<br>
 
 ## Sommaire
 
@@ -43,13 +42,21 @@
 - [Pièges courants](#pièges-courants)
 - [Ce que tu as à la fin de cette phase](#ce-que-tu-as-à-la-fin-de-cette-phase)
 
+<br>
+
 ---
+
+<br>
 
 ## Le lien avec la Phase 4
 
 En Phase 4, ton composant `recipe-index` lisait et filtrait des données. En Phase 5, **ce même composant** apprend à les écrire. Tu n'introduis pas de second composant : la communication inter-composants est un concept lourd, reporté en axe d'amélioration en fin de phase. Tout vit dans `recipe-index`, qui grossit de façon maîtrisée.
 
+<br>
+
 ---
+
+<br>
 
 ## La frontière Livewire / Alpine
 
@@ -68,7 +75,11 @@ C'est le concept central de cette phase, annoncé depuis le README. Avant tout c
 
 Retiens la règle : **si ça touche la base ou la validation, c'est Livewire ; si c'est purement visuel et instantané, c'est Alpine.** La coordination se fait par événements.
 
+<br>
+
 ---
+
+<br>
 
 ## Concepts introduits dans cette phase
 
@@ -85,7 +96,11 @@ Retiens la règle : **si ça touche la base ou la validation, c'est Livewire ; s
 | `sync()` sur relation many-to-many | Écrire les étiquettes d'une recette | Nouveau (lecture vue en Phase 2) |
 | `$this->reset()` / `resetValidation()` | Nettoyer l'état entre deux ouvertures | Nouveau |
 
+<br>
+
 ---
+
+<br>
 
 ## Diagramme d'état de la modal
 
@@ -116,7 +131,11 @@ stateDiagram-v2
     end note
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Diagramme de séquence : éditer une recette
 
@@ -148,7 +167,11 @@ sequenceDiagram
     end
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Flux de la phase
 
@@ -175,7 +198,11 @@ flowchart TD
     style Debug fill:#1f2937,stroke:#ef4444,color:#f3f4f6
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 1 — Brancher
 
@@ -195,7 +222,11 @@ git status
 git checkout -b phase/05-alpine-crud
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 2 — Décider qui fait quoi avant de coder
 
@@ -208,7 +239,11 @@ Reprends le tableau de la section « frontière » et formule-le pour ton projet
 
 Coder sans avoir fixé cette répartition mène systématiquement à des modals qui ne se ferment pas ou des états incohérents.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 3 — Propriétés du formulaire et validation
 
@@ -259,7 +294,11 @@ public array $selectedTags = [];
 
 > `#[Validate]` attache la règle directement à la propriété. Tes messages d'erreur deviennent accessibles dans le template via `@error('title')`. Plus de tableau `$rules` à maintenir séparément.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 4 — Méthodes create, edit, save
 
@@ -373,7 +412,11 @@ public function delete(int $id): void
 
 > `updateOrCreate` choisit création ou mise à jour selon que `editingId` est `null` ou non : une seule méthode pour les deux cas, sans branchement manuel.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 5 — La modal Alpine
 
@@ -447,7 +490,11 @@ Ajoute le bouton d'ouverture en mode création, en haut de ta page (près du tit
 
 > Pourquoi ne pas faire `@click="open = true"` directement sur le bouton ? Parce qu'avant d'ouvrir, il faut **vider le formulaire côté serveur** (`create()`). C'est l'illustration exacte de la frontière : Livewire prépare l'état, puis délègue l'ouverture visuelle à Alpine via un événement.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 6 — Le formulaire dans la modal
 
@@ -566,7 +613,11 @@ Ajoute le bouton d'ouverture en mode création, en haut de ta page (près du tit
 
 > `wire:model` (sans `.live`) est volontaire ici : dans un formulaire, on ne veut **pas** une requête serveur à chaque frappe. La synchronisation se fait à la soumission. C'est l'inverse du choix de la Phase 4 pour la recherche, et c'est délibéré.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 7 — Gérer les étiquettes (relation many-to-many en écriture)
 
@@ -611,7 +662,11 @@ public function allTags()
 
 Le `sync($this->selectedTags)` déjà écrit dans `save()` (Étape 4) fait le reste : il aligne exactement la table pivot sur les cases cochées (ajoute les nouvelles, retire les décochées). C'est la différence avec `attach()`, qui ne ferait qu'ajouter.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 8 — Suppression avec wire:confirm
 
@@ -644,7 +699,11 @@ Ajoute aussi un bouton « Modifier » sur chaque carte :
 
 > Pourquoi `wire:confirm` et pas une modale de confirmation Alpine ? Parce que la frontière dit : ne pas réinventer ce que Livewire fournit déjà. Une modale de confirmation custom serait du sur-travail pour cette phase. Tu pourras la sophistiquer plus tard si besoin (axe d'amélioration).
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 9 — Message de retour
 
@@ -669,7 +728,11 @@ git add .
 git commit -m "feat: CRUD recettes via modal Alpine + validation Livewire + wire:confirm"
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Vérifications finales
 
@@ -686,7 +749,11 @@ git commit -m "feat: CRUD recettes via modal Alpine + validation Livewire + wire
 - [ ] Rouvrir la modal après une erreur ne conserve pas les anciens messages d'erreur
 - [ ] Commits de la Phase 5 sur la branche `phase/05-alpine-crud`
 
+<br>
+
 ---
+
+<br>
 
 ## Pièges courants
 
@@ -704,7 +771,11 @@ git commit -m "feat: CRUD recettes via modal Alpine + validation Livewire + wire
 | `wire:confirm` sans effet | JS Livewire non chargé sur la page | Vérifier que le composant est bien rendu et `@vite` présent dans le layout |
 | Modale dupliquée ou DOM cassé | Plusieurs racines, ou modal hors du `<div>` racine du composant | Garder un unique élément racine ; placer la modal à l'intérieur |
 
+<br>
+
 ---
+
+<br>
 
 ## Ce que tu as à la fin de cette phase
 
@@ -725,6 +796,13 @@ Axe d'amélioration identifié (non traité, volontairement) : le composant `rec
 
 La Phase 6 ne touchera plus au CRUD : elle ajoutera un **tableau de bord** de statistiques (répartition par catégorie, temps moyen, nombre de favoris) sur un second composant page, pour montrer la composition de plusieurs composants et les propriétés calculées persistées.
 
+<br>
+
 ---
 
+<br>
+
 > Phase suivante : [06-dashboard.md](./06-dashboard.md) — second composant page, statistiques via `#[Computed]`, agrégations Eloquent, composition de composants.
+
+<br>
+

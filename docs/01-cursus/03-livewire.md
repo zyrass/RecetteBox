@@ -393,7 +393,7 @@ php artisan about
 
 ### Publication de la configuration Livewire
 
-Livewire 4 préfixe par défaut les fichiers de composants d'un caractère éclair (`⚡`). C'est purement cosmétique et désactivable. On le désactive pour garder des noms de fichiers sobres et sans caractère spécial.
+Livewire 4 préfixe par défaut les fichiers de composants d'un caractère éclair (`âš¡`). C'est purement cosmétique et désactivable. On le désactive pour garder des noms de fichiers sobres et sans caractère spécial.
 
 #### Windows (PowerShell)
 ```powershell
@@ -607,12 +607,12 @@ On remplace la liste brute par une grille de cartes responsive. Tout le style pa
 
                     <p class="mt-2 text-sm text-gray-600">
                         {{ $recipe->category->label() }}
-                        ·
+                        Â·
                         {{ $recipe->difficulty->label() }}
                     </p>
 
                     <p class="mt-1 text-sm text-gray-500">
-                        {{ $recipe->prep_minutes }} min ·
+                        {{ $recipe->prep_minutes }} min Â·
                         {{ $recipe->servings }} portions
                     </p>
 
@@ -769,3 +769,6 @@ La Phase 4 exploitera enfin la moitié droite du diagramme de cycle de vie (hydr
 
 > Phase précédente : [02-modele.md](02-modele.md)
 > Phase suivante : [04-reactivite.md](04-reactivite.md) — `wire:model.live`, filtres dynamiques (catégorie, difficulté, favoris), tri, et pagination Livewire, en transformant le composant `recipe-index` actuel sans le réécrire.
+
+<br>
+

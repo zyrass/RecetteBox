@@ -8,19 +8,18 @@
 > Créer un second composant page (le tableau de bord) qui agrège les recettes en statistiques — répartition par catégorie, par difficulté, temps moyen, favoris. On y aborde les propriétés calculées persistées et la composition de composants, en s'appuyant sur la frontière déjà posée en Phase 5.
 
 > Pré-requis strict : la [Phase 5 — Alpine.js et CRUD](./05-crud-alpine.md) est terminée. L'application gère le CRUD complet des recettes sur la page `/recettes`.
-
 <br>
 
 ---
 
 <br>
-
 > Phase précédente : [05-crud-alpine.md](./05-crud-alpine.md)
 > Phase suivante : [07-finitions.md](./07-finitions.md)
-
 <br>
 
 ---
+
+<br>
 
 ## Sommaire
 
@@ -42,13 +41,21 @@
 - [Pièges courants](#pièges-courants)
 - [Ce que tu as à la fin de cette phase](#ce-que-tu-as-à-la-fin-de-cette-phase)
 
+<br>
+
 ---
+
+<br>
 
 ## Le lien avec les phases précédentes
 
 Jusqu'ici, un seul composant page (`recipe-index`) faisait tout. La Phase 6 introduit un **deuxième** composant page indépendant : `dashboard`. Il ne modifie aucune recette ; il lit et agrège celles que les phases 2 et 5 ont produites. C'est l'occasion de montrer comment plusieurs pages cohabitent et comment un affichage pur se factorise — sans toucher au CRUD existant.
 
+<br>
+
 ---
+
+<br>
 
 ## Concepts introduits dans cette phase
 
@@ -62,7 +69,11 @@ Jusqu'ici, un seul composant page (`recipe-index`) faisait tout. La Phase 6 intr
 | Invalidation de cache (`unset`) | Garder des stats fraîches après modification | Nouveau |
 | Navigation `wire:navigate` | Passer d'une page à l'autre sans rechargement complet | Nouveau |
 
+<br>
+
 ---
+
+<br>
 
 ## Composant Livewire ou composant Blade : la bonne question
 
@@ -78,7 +89,11 @@ Règle : **un composant Livewire coûte un cycle serveur ; ne l'utilise que s'il
 
 Piège connexe (constaté en production) : ne **jamais** passer une collection Eloquent en propriété publique à un composant Livewire enfant. La re-sérialisation entre requêtes perd les contraintes et relations de la requête. Les composants Blade n'ont pas ce problème : ils reçoivent les données au rendu, sans cycle de vie.
 
+<br>
+
 ---
+
+<br>
 
 ## Diagramme de séquence : chargement du tableau de bord
 
@@ -101,7 +116,11 @@ sequenceDiagram
     N-->>U: tableau de bord affiché
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Diagramme d'état du cache d'une statistique
 
@@ -131,7 +150,11 @@ stateDiagram-v2
     end note
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Flux de la phase
 
@@ -157,7 +180,11 @@ flowchart TD
     style Debug fill:#1f2937,stroke:#ef4444,color:#f3f4f6
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 1 — Brancher
 
@@ -177,7 +204,11 @@ git status
 git checkout -b phase/06-dashboard
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 2 — Créer le composant page dashboard
 
@@ -229,7 +260,11 @@ Route::livewire('/tableau-de-bord', 'pages::dashboard')->name('dashboard');
 
 Vérifie : `http://127.0.0.1:8000/tableau-de-bord` affiche le titre.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 3 — Navigation entre les deux pages
 
@@ -252,7 +287,11 @@ Pour relier les deux pages, ajoute une barre de navigation dans le layout. `wire
 </nav>
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 4 — Premières statistiques avec #[Computed]
 
@@ -325,7 +364,11 @@ class extends Component {
 
 > `$this->longest?->title` : l'opérateur `?->` évite une erreur si aucune recette n'existe (la méthode renvoie `null`). Ce genre de garde est indispensable sur un tableau de bord, qui doit fonctionner même base vide.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 5 — Agrégations groupées et gestion des enums
 
@@ -383,7 +426,11 @@ Pour réafficher le libellé français, reconstruis l'enum depuis la valeur dans
 
 > Si une valeur en base ne correspond à aucun cas d'enum, `from()` lève une exception. C'est voulu : cela signale une donnée corrompue. Pour tolérer le cas, `tryFrom()` renvoie `null` au lieu de lever ; à utiliser seulement si tu acceptes des valeurs hors enum, ce qui n'est pas le cas ici.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 6 — Une carte de statistique réutilisable (composant Blade)
 
@@ -437,7 +484,11 @@ Cela crée `resources/views/components/stat-card.blade.php`. Remplace son conten
 
 > On passe `$this->total` (un entier), jamais une collection Eloquent. C'est la règle de composition propre : les composants Blade reçoivent des valeurs simples, pas des modèles à re-sérialiser.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 7 — Visualiser les répartitions en barres
 
@@ -473,7 +524,11 @@ Pas de librairie de graphes : une barre proportionnelle en Tailwind suffit, sans
 
 > Pourquoi `style="width: X%"` et pas une classe Tailwind ? Parce que le pourcentage est une valeur calculée à l'exécution. Tailwind ne génère que les classes présentes dans le code source au build ; une largeur dynamique doit passer par un style inline. C'est un cas légitime, à ne pas confondre avec un usage paresseux du style inline.
 
+<br>
+
 ---
+
+<br>
 
 ## Étape 8 — Optimiser avec #[Computed(persist: true)]
 
@@ -534,7 +589,11 @@ git add .
 git commit -m "feat: tableau de bord (stats agregees, composant Blade, barres)"
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## Vérifications finales
 
@@ -549,7 +608,11 @@ git commit -m "feat: tableau de bord (stats agregees, composant Blade, barres)"
 - [ ] Le dashboard fonctionne même sans aucune recette (gardes `?->` et division par zéro)
 - [ ] Commits de la Phase 6 sur la branche `phase/06-dashboard`
 
+<br>
+
 ---
+
+<br>
 
 ## Pièges courants
 
@@ -565,7 +628,11 @@ git commit -m "feat: tableau de bord (stats agregees, composant Blade, barres)"
 | Page enfant casse après navigation | Collection Eloquent passée en prop à un composant Livewire enfant | Ne pas faire ; passer des scalaires, ou utiliser un composant Blade |
 | `wire:navigate` recharge toute la page | Layout non compatible navigation | Vérifier que la navigation cible des composants page sous le même layout à slot |
 
+<br>
+
 ---
+
+<br>
 
 ## Ce que tu as à la fin de cette phase
 
@@ -585,6 +652,13 @@ Axe d'amélioration identifié (non traité) : synchroniser le dashboard en temp
 
 La Phase 7 ne change plus aucune fonctionnalité : elle polit l'expérience — mode sombre Tailwind, indicateurs de chargement `wire:loading`, notifications animées (le vrai toast, là où la Phase 5 posait un simple message), transitions. C'est la phase de finition du cœur, après quoi seul le bonus d'authentification (Phase 9) reste.
 
+<br>
+
 ---
 
+<br>
+
 > Phase suivante : `07-finitions.md` — mode sombre, `wire:loading`, `wire:dirty`, toasts animés, transitions. Polissage final du cœur du projet.
+
+<br>
+

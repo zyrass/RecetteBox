@@ -2,7 +2,11 @@
 
 Ce document analyse la pertinence de ce projet dans un cadre professionnel (CV, Portfolio, Entretien technique) et explique pourquoi il constitue une preuve de compétence supérieure à un projet "CRUD" classique.
 
+<br>
+
 ---
+
+<br>
 
 ## 1. Pourquoi ce projet est fiable (Argumentaire CV)
 
@@ -12,7 +16,11 @@ Contrairement à de nombreux tutoriels qui se contentent d'effleurer les surface
 - **Modernité Front-end** : Tailwind CSS 4 et Livewire 4 SFC (Single File Components). Tu montres que tu es à la pointe des outils actuels, pas sur des versions obsolètes.
 - **Optimisation UX** : Gestion du mode sombre sans flash, navigation type SPA (`wire:navigate`), et feedback utilisateur (Toasts, Loading states). Ce sont les détails qui séparent un amateur d'un professionnel.
 
+<br>
+
 ---
+
+<br>
 
 ## 2. L'avantage majeur : La Modélisation
 
@@ -25,7 +33,11 @@ La force de RecetteBox réside dans sa **rigueur architecturale**. Là où d'aut
 
 En entretien, insister sur la Phase 02 (Modélisation) prouve que tu penses à la **maintenance à long terme** et à la **qualité du code** avant même de dessiner l'interface.
 
+<br>
+
 ---
+
+<br>
 
 ## 3. Limites et Transparence (Honnêteté Technique)
 
@@ -38,7 +50,11 @@ Pour être crédible professionnellement, il faut connaître les limites de son 
 | **Cache Local** | Les statistiques sont calculées ou mémoïsées (`#[Computed]`) mais pas stockées en Redis. | Utilisation de Redis pour des agrégations sur des millions de lignes. |
 | **Auth Optionnelle** | Le projet est conçu comme un outil local avant d'être multi-utilisateur. | La Phase 09 comble ce manque, mais le cœur reste mono-tenant par défaut. |
 
+<br>
+
 ---
+
+<br>
 
 ## 4. Comparaison : RecetteBox vs Projet "Standard"
 
@@ -50,7 +66,11 @@ Pour être crédible professionnellement, il faut connaître les limites de son 
 | **Données** | `string` partout | Enums et relations strictes |
 | **Doc** | "Lisez le code" | Standard ABI complet (Admonitions, Mermaid) |
 
+<br>
+
 ---
+
+<br>
 
 ## 5. Conclusion pour un Recruteur
 
@@ -62,3 +82,6 @@ RecetteBox n'est pas qu'une application de gestion de recettes ; c'est une **dé
 
 > [!TIP]
 > **Conseil pour ton CV** : Ne liste pas juste "Laravel" dans tes compétences. Ajoute : *"Architecture TALL Stack (Livewire SFC, Tailwind 4, Modélisation Enums PHP 8.4)"*. C'est ce qui déclenche l'intérêt technique.
+
+<br>
+

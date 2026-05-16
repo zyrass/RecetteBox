@@ -2,7 +2,11 @@
 
 Bienvenue dans le centre technique de **RecetteBox**. Cette documentation est organisée de manière séquentielle pour vous accompagner de l'installation jusqu'au déploiement de fonctionnalités avancées.
 
+<br>
+
 ---
+
+<br>
 
 ## Structure du Répertoire
 
@@ -19,7 +23,11 @@ Le cœur de l'apprentissage. Chaque phase introduit un concept majeur de l'écos
 Modules optionnels pour aller plus loin une fois le cursus principal maîtrisé.
 *   Fichiers : 09-authentification.md.
 
+<br>
+
 ---
+
+<br>
 
 ## 🏗️ Qualité et Professionnalisme
 
@@ -29,7 +37,13 @@ Rapport technique détaillé sur l'état de l'application à l'issue du cœur du
 ### [Fiabilité Professionnelle](./fiabilite-professionnelle.md)
 Analyse de la valeur du projet pour un portfolio ou un CV : points forts (modélisation), limites et avantages par rapport aux projets standards.
 
+<br>
+
 ---
+
+<br>
 
 > [!TIP]
 > Si vous débutez, commencez toujours par le guide correspondant à votre OS dans le dossier `00-configuration`.
+
+<br>

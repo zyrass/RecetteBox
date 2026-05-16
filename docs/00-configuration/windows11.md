@@ -465,3 +465,6 @@ Tu n'as **rien écrit en PHP** à ce stade. C'est volontaire. La Phase 1 commenc
 <br>
 
 > Phase suivante : [01-squelette.md](../01-cursus/01-squelette.md) — création du projet Laravel 13, premier itinéraire MVC sans Livewire, prise en main de la structure de fichiers.
+
+<br>
+

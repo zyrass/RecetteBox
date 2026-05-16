@@ -808,3 +808,6 @@ Tu n'as **pas** touché à la base de données métier ni à Livewire. C'est vol
 
 > Phase précédente : [00-configuration/windows11.md](../00-configuration/windows11.md)
 > Phase suivante : [02-modele.md](02-modele.md) — migrations, modèle Eloquent `Recipe`, enum PHP 8.3 pour `category` et `difficulty`, factory et seeder pour disposer de 30 recettes réalistes.
+
+<br>
+
