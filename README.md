@@ -71,7 +71,7 @@ Selon votre objectif, le temps d'investissement varie :
 
 ## Aperçu de l'Interface
 
-_Ces images ont été générées par Antigravity (Banana) en se basant sur le code source actuel du projet pour illustrer le rendu visuel final attendu._
+_**Note importante :** Ces images sont des mockups haute fidélité générés par IA (Antigravity/Banana) en se basant sur le code source actuel. Elles illustrent l'intention esthétique et le style visuel visé, mais peuvent différer légèrement du rendu réel final de l'application._
 
 | Liste des Recettes | Tableau de Bord (Dashboard) |
 |---|---|
