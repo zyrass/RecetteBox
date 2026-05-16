@@ -199,8 +199,10 @@ recettebox/
 │   │   ├── 06-dashboard.md           # Statistiques
 │   │   ├── 07-finitions.md           # Toasts et Dark mode
 │   │   └── 08-tests.md               # [À faire] Pest / Tests unitaires
-│   └── 09-bonus/                     # Modules avancés
-│       └── 09-authentification.md
+│   ├── 09-bonus/                     # Modules avancés
+│   │   └── 09-authentification.md
+│   ├── audit-complet.md              # Rapport technique v1.0.0
+│   └── fiabilite-professionnelle.md  # Valeur métier et limites
 └── (app, routes, resources...)       # Code Laravel généré en Phase 1
 ```
 

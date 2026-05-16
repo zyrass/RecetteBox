@@ -21,5 +21,15 @@ Modules optionnels pour aller plus loin une fois le cursus principal maîtrisé.
 
 ---
 
+## 🏗️ Qualité et Professionnalisme
+
+### [Audit Complet](./audit-complet.md)
+Rapport technique détaillé sur l'état de l'application à l'issue du cœur du projet.
+
+### [Fiabilité Professionnelle](./fiabilite-professionnelle.md)
+Analyse de la valeur du projet pour un portfolio ou un CV : points forts (modélisation), limites et avantages par rapport aux projets standards.
+
+---
+
 > [!TIP]
 > Si vous débutez, commencez toujours par le guide correspondant à votre OS dans le dossier `00-configuration`.
