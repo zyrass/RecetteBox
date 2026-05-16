@@ -76,15 +76,15 @@ Trois raisons concrètes :
 
 ```mermaid
 flowchart TD
-    Start([Windows 11 brut]) -->|Étape 1| Git[Installer Git for Windows]
-    Git -->|Étape 2| Node[Installer Node.js 22 LTS]
-    Node -->|Étape 3| PhpNew[Étape 3<br/>php.new<br/>PHP 8.4 + Composer + Laravel]
-    PhpNew -->|Étape 4| Sqlite[Étape 4<br/>Vérifier SQLite]
-    Sqlite -->|Étape 5| VsCode[Étape 5<br/>VS Code + extensions]
-    VsCode -->|Étape 6| Repo[Étape 6<br/>git init recettebox]
-    Repo -->|Vérifications| Check{OK ?}
-    Check -- Oui -->|Environnement prêt| Done(Passage Phase 1])
-    Check -- Non -->|Voir section| Debug[Pièges courants]
+    Start([Windows 11 brut]) -->|"Étape 1"| Git[Installer Git for Windows]
+    Git -->|"Étape 2"| Node[Installer Node.js 22 LTS]
+    Node -->|"Étape 3"| PhpNew[Étape 3<br/>php.new<br/>PHP 8.4 + Composer + Laravel]
+    PhpNew -->|"Étape 4"| Sqlite[Étape 4<br/>Vérifier SQLite]
+    Sqlite -->|"Étape 5"| VsCode[Étape 5<br/>VS Code + extensions]
+    VsCode -->|"Étape 6"| Repo[Étape 6<br/>git init recettebox]
+    Repo -->|"Vérifications"| Check{OK ?}
+    Check -- Oui -->|"Environnement prêt"| Done(Passage Phase 1)
+    Check -- Non -->|"Voir section"| Debug[Pièges courants]
     Debug --> Check
 
     style Start fill:#1f2937,stroke:#9ca3af,color:#f3f4f6
