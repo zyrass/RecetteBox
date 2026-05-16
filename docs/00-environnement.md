@@ -83,8 +83,8 @@ flowchart TD
     Sqlite -->|"Étape 5"| VsCode[Étape 5<br/>VS Code + extensions]
     VsCode -->|"Étape 6"| Repo[Étape 6<br/>git init recettebox]
     Repo -->|"Vérifications"| Check{OK ?}
-    Check -- Oui -->|"Environnement prêt"| Done(Passage Phase 1)
-    Check -- Non -->|"Voir section"| Debug[Pièges courants]
+    Check -->|"Oui<br/>Environnement prêt"| Done(Passage Phase 1)
+    Check -->|"Non<br/>Voir section"| Debug[Pièges courants]
     Debug --> Check
 
     style Start fill:#1f2937,stroke:#9ca3af,color:#f3f4f6
