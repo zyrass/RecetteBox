@@ -54,6 +54,26 @@ _Une **phase bonus optionnelle** ajoute ensuite l'authentification (Laravel Bree
 
 <br>
 
+## Aperçu de l'Interface
+
+_Ces images ont été générées par Antigravity (Banana) en se basant sur le code source actuel du projet pour illustrer le rendu visuel final attendu._
+
+| Liste des Recettes | Tableau de Bord (Dashboard) |
+|---|---|
+| ![Liste](./docs/images/ui-list.png) | ![Dashboard](./docs/images/ui-dashboard.png) |
+
+| Page de Connexion | Page d'Inscription |
+|---|---|
+| ![Login](./docs/images/ui-login.png) | ![Register](./docs/images/ui-register.png) |
+
+<br>
+
+<br>
+
+---
+
+<br>
+
 ## Stack technique
 
 | Couche | Outil | Version cible | Rôle |
@@ -205,6 +225,11 @@ recettebox/
 │   │   └── 08-tests.md               # [À faire] Pest / Tests unitaires
 │   ├── 09-bonus/                     # Modules avancés
 │   │   └── 09-authentification.md
+│   ├── images/                       # Captures et mockups UI
+│   │   ├── ui-list.png
+│   │   ├── ui-dashboard.png
+│   │   ├── ui-login.png
+│   │   └── ui-register.png
 │   ├── audit-complet.md              # Rapport technique v1.0.0
 │   └── fiabilite-professionnelle.md  # Valeur métier et limites
 └── (app, routes, resources...)       # Code Laravel généré en Phase 1
