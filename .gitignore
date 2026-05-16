@@ -1,0 +1,20 @@
+/vendor
+/node_modules
+/public/storage
+/public/hot
+/storage/*.key
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/storage/logs/*
+/storage/debugbar
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+.vscode/
+/scratch/
+/docs/images/ (Wait, we want to keep images in docs for README? Yes, user said "Les images ont été enregistrées dans docs/images/ et poussées sur le dépôt distant pour être visibles par tous.")
+*.sqlite
+*.sqlite-journal
