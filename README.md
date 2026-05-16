@@ -71,11 +71,10 @@ _Une **phase bonus optionnelle** ajoute ensuite l'authentification (Laravel Bree
 | OS de développement | Windows 11 | - | Cible documentée |
 
 > [!TIP]
-> ### 🍎 MacOS & 🐧 Linux
-> Bien que ce projet soit documenté pour **Windows 11**, il est 100% compatible avec MacOS et Linux.
-> - Utilisez **[Laravel Herd](https://herd.laravel.com/)** (Mac) pour un environnement ultra-rapide.
-> - PHP 8.4+ et Node 22+ sont requis.
-> - SQLite est généralement pré-installé nativement.
+> ### 🍎 macOS & 🐧 Linux
+> Bien que ce projet soit né sous Windows 11, il est 100% compatible avec macOS et Linux. Nous fournissons désormais des guides d'installation dédiés :
+> - [🍎 Guide d'environnement macOS (Laravel Herd)](./docs/00-environnement-macos.md)
+> - [🐧 Guide d'environnement Linux (php.new)](./docs/00-environnement-linux.md)
 
 <br>
 

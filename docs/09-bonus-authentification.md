@@ -209,6 +209,7 @@ stateDiagram-v2
 
 L'authentification touche au schéma de base de données et aux routes. On isole tout sur une branche dédiée pour pouvoir revenir en arrière sans douleur.
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Se placer dans le projet
 cd $env:USERPROFILE\Documents\Projets\recettebox
@@ -217,6 +218,17 @@ cd $env:USERPROFILE\Documents\Projets\recettebox
 git status
 
 # Créer la branche bonus à partir de l'état stable du cœur
+git checkout -b phase/09-bonus-auth
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+cd ~/Documents/Projets/recettebox
+
+# Vérifier le statut
+git status
+
+# Nouvelle branche
 git checkout -b phase/09-bonus-auth
 ```
 
@@ -234,6 +246,7 @@ git checkout -b phase/09-bonus-auth
 
 ### Installation du paquet Breeze
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Installer Breeze en dépendance de développement uniquement
 # (le scaffolding n'est utile qu'une fois, en développement)
@@ -244,10 +257,20 @@ composer require laravel/breeze --dev
 php artisan breeze:install blade
 ```
 
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Installer Breeze
+composer require laravel/breeze --dev
+
+# Installer le scaffolding Blade
+php artisan breeze:install blade
+```
+
 À l'issue de cette commande, Breeze a publié dans ton projet : routes d'auth, contrôleurs, vues Blade, requêtes de formulaire, et a modifié `package.json` / la configuration Vite si nécessaire.
 
 ### Migrations et compilation assets
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Installer les dépendances front ajoutées par Breeze, puis compiler
 npm install
@@ -258,12 +281,27 @@ npm run build
 php artisan migrate
 ```
 
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Dépendances, build et migrations
+npm install
+npm run build
+php artisan migrate
+```
+
 > Si `php artisan migrate` demande confirmation de création de la base SQLite, accepte. Le fichier `database/database.sqlite` issu de la Phase 2 est conservé ; Breeze ajoute seulement de nouvelles tables.
 
 Lance le serveur et teste les écrans :
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Démarre le serveur de développement Laravel
+php artisan serve
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Lancer le serveur
 php artisan serve
 ```
 
@@ -303,8 +341,15 @@ Concept clé à retenir : Breeze n'est **pas un package qui agit en boîte noire
 
 Jusqu'ici, une recette n'appartient à personne. On ajoute la colonne `user_id` à la table `recipes` **existante** (migration de modification, pas de création).
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Générer une migration de modification de la table recipes
+php artisan make:migration add_user_id_to_recipes_table --table=recipes
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Générer la migration de liaison user_id
 php artisan make:migration add_user_id_to_recipes_table --table=recipes
 ```
 
@@ -344,7 +389,14 @@ public function down(): void
 
 ### Exécution de la migration
 
+#### 🪟 Windows (PowerShell)
 ```powershell
+php artisan migrate
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Appliquer la migration
 php artisan migrate
 ```
 
@@ -470,8 +522,15 @@ Le scoping de l'étape 6 empêche d'**afficher** les recettes d'autrui, mais pas
 
 ### Génération de la Policy Recipe
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Générer une policy liée au modèle Recipe
+php artisan make:policy RecipePolicy --model=Recipe
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Générer la policy
 php artisan make:policy RecipePolicy --model=Recipe
 ```
 
@@ -540,8 +599,15 @@ public function run(): void
 
 ### Reset global et ré-exécution du seeder
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Recrée le schéma et réinjecte des données cohérentes avec l'auth
+php artisan migrate:fresh --seed
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Reset et seeding (auth-ready)
 php artisan migrate:fresh --seed
 ```
 

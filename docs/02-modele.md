@@ -254,6 +254,7 @@ flowchart TD
 
 ### Initialisation de la Phase 2
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 cd $env:USERPROFILE\Documents\Projets\recettebox
 
@@ -261,6 +262,17 @@ cd $env:USERPROFILE\Documents\Projets\recettebox
 git status
 
 # Branche dediee a la Phase 2
+git checkout -b phase/02-modele
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+cd ~/Documents/Projets/recettebox
+
+# Vérifier le statut
+git status
+
+# Nouvelle branche
 git checkout -b phase/02-modele
 ```
 
@@ -278,8 +290,15 @@ Crée le dossier et le fichier `app/Enums/RecipeCategory.php` :
 
 ### Création du dossier Enums
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 mkdir app\Enums
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Créer le dossier Enums
+mkdir -p app/Enums
 ```
 
 ### `app/Enums/RecipeCategory.php`
@@ -357,8 +376,15 @@ enum RecipeDifficulty: string
 
 ### Génération de la migration recipes
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Genere une migration de CREATION de table
+php artisan make:migration create_recipes_table
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Générer la migration
 php artisan make:migration create_recipes_table
 ```
 
@@ -417,7 +443,15 @@ public function down(): void
 
 ### Génération des migrations tags et pivot
 
+#### 🪟 Windows (PowerShell)
 ```powershell
+php artisan make:migration create_tags_table
+php artisan make:migration create_recipe_tag_table
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Générer les migrations tags et pivot
 php artisan make:migration create_tags_table
 php artisan make:migration create_recipe_tag_table
 ```
@@ -479,8 +513,15 @@ public function down(): void
 
 ### Exécution de `php artisan migrate`
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Applique toutes les migrations non encore executees
+php artisan migrate
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Exécuter les migrations
 php artisan migrate
 ```
 
@@ -488,11 +529,19 @@ Vérifie le schéma :
 
 ### Vérification du schéma SQL
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Apercu de la table recipes : colonnes, types, index
 php artisan db:table recipes
 
 # Liste de toutes les tables
+php artisan db:show
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Vérifier le schéma
+php artisan db:table recipes
 php artisan db:show
 ```
 
@@ -506,7 +555,14 @@ php artisan db:show
 
 ### Génération du modèle Recipe
 
+#### 🪟 Windows (PowerShell)
 ```powershell
+php artisan make:model Recipe
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Générer le modèle Recipe
 php artisan make:model Recipe
 ```
 
@@ -584,7 +640,14 @@ class Recipe extends Model
 
 ### Génération du modèle Tag
 
+#### 🪟 Windows (PowerShell)
 ```powershell
+php artisan make:model Tag
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Générer le modèle Tag
 php artisan make:model Tag
 ```
 
@@ -629,7 +692,15 @@ class Tag extends Model
 
 Une factory décrit comment fabriquer une instance crédible du modèle. Pour des titres réalistes plutôt que des mots aléatoires, on pioche dans une liste de vraies recettes.
 
+#### 🪟 Windows (PowerShell)
 ```powershell
+php artisan make:factory RecipeFactory
+php artisan make:factory TagFactory
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Générer les factories
 php artisan make:factory RecipeFactory
 php artisan make:factory TagFactory
 ```
@@ -771,9 +842,16 @@ Exécute le peuplement :
 
 ### Migration fresh et seeding
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # migrate:fresh DETRUIT et recree tout le schema, puis --seed lance le seeder.
 # En developpement, c'est la commande de reset propre.
+php artisan migrate:fresh --seed
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Reset global et seeding
 php artisan migrate:fresh --seed
 ```
 
@@ -781,7 +859,14 @@ Vérifie en base sans écrire de code, via le REPL Tinker :
 
 ### Ouverture de Tinker
 
+#### 🪟 Windows (PowerShell)
 ```powershell
+php artisan tinker
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Lancer Tinker
 php artisan tinker
 ```
 
@@ -898,7 +983,15 @@ Recharge `http://127.0.0.1:8000/recettes` (relance `php artisan serve` si besoin
 
 Commit de la phase :
 
+#### 🪟 Windows (PowerShell)
 ```powershell
+git add .
+git commit -m "feat: persistance Eloquent (migrations, enums, modeles, factory, seeder)"
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Finalisation Phase 2
 git add .
 git commit -m "feat: persistance Eloquent (migrations, enums, modeles, factory, seeder)"
 ```

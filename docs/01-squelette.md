@@ -195,11 +195,21 @@ Problème annoncé en fin de Phase 0 : `laravel new recettebox` veut créer un d
 
 ### Création du projet temporaire
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Se placer dans le dossier PARENT du projet (pas dans recettebox/)
 cd $env:USERPROFILE\Documents\Projets
 
 # Generer le projet Laravel dans un dossier temporaire neuf
+laravel new recettebox-tmp
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Se placer dans le dossier PARENT du projet
+cd ~/Documents/Projets
+
+# Generer le projet Laravel dans un dossier temporaire
 laravel new recettebox-tmp
 ```
 
@@ -216,6 +226,7 @@ Une fois `Application ready!` affiché, fusionne le projet généré dans ton re
 
 ### Fusion des fichiers avec robocopy
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Copier tout le contenu de recettebox-tmp DANS recettebox,
 # SANS ecraser le dossier .git ni la documentation existante.
@@ -230,13 +241,32 @@ Remove-Item -Recurse -Force recettebox-tmp
 cd recettebox
 ```
 
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Copier le contenu (rsync est recommandé car il préserve les permissions)
+rsync -av --exclude='.git' recettebox-tmp/ recettebox/
+
+# Supprimer le dossier temporaire
+rm -rf recettebox-tmp
+
+# Entrer dans le projet
+cd recettebox
+```
+
 Vérifie que rien n'a été écrasé :
 
 ### Vérification de la structure du repository
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # README.md et docs/ doivent toujours etre la, AINSI QUE
 # la nouvelle arborescence Laravel (app, routes, resources, etc.)
+git status
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Vérifier la présence des nouveaux fichiers Laravel
 git status
 ```
 
@@ -244,11 +274,22 @@ Git va lister une grande quantité de nouveaux fichiers (tout Laravel). C'est at
 
 ### Premier commit du squelette Laravel
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Basculer sur la branche de la Phase 1
 git checkout -b phase/01-squelette
 
 # Indexer et commiter le squelette Laravel
+git add .
+git commit -m "feat: generer le squelette Laravel 13 (sqlite, sans starter kit)"
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Basculer sur la branche
+git checkout -b phase/01-squelette
+
+# Indexer et commiter
 git add .
 git commit -m "feat: generer le squelette Laravel 13 (sqlite, sans starter kit)"
 ```
@@ -283,9 +324,16 @@ Vérifie que la connexion répond :
 
 ### Vérification de la base de données
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Doit afficher la liste des tables systeme deja migrees,
 # preuve que SQLite est operationnel
+php artisan db:show
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Vérifier la connexion SQLite
 php artisan db:show
 ```
 
@@ -299,9 +347,16 @@ php artisan db:show
 
 ### Lancement du serveur de développement
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Demarre le serveur de developpement integre de Laravel
 # Accessible sur http://127.0.0.1:8000
+php artisan serve
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Demarrer le serveur
 php artisan serve
 ```
 
@@ -395,8 +450,15 @@ Recharge `http://127.0.0.1:8000/recettes`. Tu dois voir le texte. Tu viens de pr
 
 ### Génération du RecipeController
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Genere app/Http/Controllers/RecipeController.php
+php artisan make:controller RecipeController
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Générer le contrôleur
 php artisan make:controller RecipeController
 ```
 
@@ -474,9 +536,16 @@ La route renvoie `view('recipes.index', ...)`, mais ce fichier n'existe pas enco
 
 ### Création du dossier des vues
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Cree le sous-dossier des vues de recettes
 mkdir resources\views\recipes
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Créer le dossier des vues
+mkdir -p resources/views/recipes
 ```
 
 Crée le fichier `resources/views/recipes/index.blade.php` avec un contenu minimal pour valider que la vue se charge :
@@ -643,8 +712,15 @@ Vérifie que la route nommée est bien enregistrée :
 
 ### Liste des routes enregistrées
 
+#### 🪟 Windows (PowerShell)
 ```powershell
 # Liste toutes les routes ; tu dois voir la colonne Name = recipes.index
+php artisan route:list
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Vérifier les routes
 php artisan route:list
 ```
 
@@ -654,7 +730,15 @@ Commit final de la phase :
 
 ### Finalisation de la Phase 1
 
+#### 🪟 Windows (PowerShell)
 ```powershell
+git add .
+git commit -m "feat: MVC nu pour la liste des recettes (route nommee, controleur, vue, layout)"
+```
+
+#### 🍎 macOS / 🐧 Linux (Terminal)
+```bash
+# Finalisation
 git add .
 git commit -m "feat: MVC nu pour la liste des recettes (route nommee, controleur, vue, layout)"
 ```
