@@ -124,6 +124,10 @@
 > - **Tests de Composants** : Validation des interactions Livewire sans avoir besoin d'un navigateur (tests Feature rapides).
 > - **Isolation** : Utilisation systématique de bases de données SQLite en mémoire pour des performances optimales.
 
+> [!CAUTION]
+> ### Limite : Absence de tests E2E
+> L'audit note l'absence de tests **End-to-End (E2E)** (via Cypress ou Playwright). Bien que les tests Feature de Livewire couvrent la logique d'interaction, ils ne simulent pas le rendu réel dans un moteur de navigateur (JS, CSS, délais réseau). C'est une étape nécessaire pour une certification de fiabilité critique.
+
 **Conclusion** : La stratégie de test adoptée est pragmatique et efficace. Elle garantit que toute évolution future ne cassera pas le cœur de l'application, élevant le projet au rang de "Production-Ready".
 
 <br>
@@ -143,10 +147,13 @@ L'analyse croisée de la modélisation (Section 2) et de l'interface (Section 3)
 **Rigueur Documentaire** :
 Le respect du standard ABI (Section 4) élève ce projet au-delà du simple développement technique pour en faire une base de connaissance transmissible et professionnelle.
 
+**Limites Volontaires (Infrastructure)** :
+L'audit souligne l'absence délibérée de documentation sur le **déploiement et l'infrastructure** (CI/CD, Docker, Provisioning). Le projet se concentre sur la maîtrise applicative ; la mise en production sur une infrastructure professionnelle (type Laravel Forge ou Vapor) reste une étape à documenter ultérieurement.
+
 > [!IMPORTANT]
 > ### Résultat Final : Portfolio-Ready
-> **Score de fiabilité : 100%**. 
-> L'application remplit l'intégralité des critères d'une réalisation senior, incluant la sécurité, la performance, l'UX et la stabilité via les tests automatisés. Ce projet est validé pour une présentation en entretien technique ou une intégration sur un CV de haut niveau.
+> **Score de fiabilité : 95%**. 
+> L'application remplit l'intégralité des critères d'une réalisation senior sur le plan applicatif. Les 5% restants pour atteindre la perfection absolue concernent l'implémentation de tests E2E et la formalisation de la stratégie de déploiement (Infrastructure as Code). Ce projet est hautement recommandé pour une présentation technique.
 
 <br>
 
