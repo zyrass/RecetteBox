@@ -68,8 +68,6 @@ _Ces images ont été générées par Antigravity (Banana) en se basant sur le c
 
 <br>
 
-<br>
-
 ---
 
 <br>
@@ -173,7 +171,7 @@ Le **cœur du projet** correspond aux phases 00 à 08. La phase 08 introduit les
 | 05 | Alpine.js et CRUD | Frontière client/serveur | Alpine `x-data`, modal, validation Livewire | Cœur |
 | 06 | Tableau de bord | Statistiques calculées | Computed properties persistées, composition de composants | Cœur |
 | 07 | Finitions | Polissage UX | Dark mode, `wire:loading`, toasts, transitions | Cœur |
-| 08 | Tests automatisés | Stabilité du code | Pest | Cœur |
+| 08 | Tests automatisés | Stabilité du code | Pest | Prêt |
 | 09 | **Bonus — Authentification** | Auth, middleware, scoping par utilisateur | Laravel Breeze, relation `User hasMany Recipe`, policies | **Bonus** |
 
 <br>
@@ -194,7 +192,7 @@ Le **cœur du projet** correspond aux phases 00 à 08. La phase 08 introduit les
 | Phase 05 | [docs/01-cursus/05-crud-alpine.md](docs/01-cursus/05-crud-alpine.md) | Prêt |
 | Phase 06 | [docs/01-cursus/06-dashboard.md](docs/01-cursus/06-dashboard.md) | Prêt |
 | Phase 07 | [docs/01-cursus/07-finitions.md](docs/01-cursus/07-finitions.md) | Prêt |
-| Phase 08 | [docs/01-cursus/08-tests.md](docs/01-cursus/08-tests.md) | À faire |
+| Phase 08 | [docs/01-cursus/08-tests.md](docs/01-cursus/08-tests.md) | Prêt |
 | Phase 09 | [docs/09-bonus/09-authentification.md](docs/09-bonus/09-authentification.md) | Bonus |
 
 <br>
