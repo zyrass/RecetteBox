@@ -52,7 +52,7 @@
 
 En Phase 1, le contrôleur contenait ceci, avec un commentaire annonçant la suite :
 
-#### Phase 1 : Données en dur
+### Phase 1 : Données en dur
 
 ```php
 // Donnees temporaires, codees en dur.
@@ -64,7 +64,7 @@ $recipes = [
 
 En Phase 2, **ce même emplacement** devient :
 
-#### Phase 2 : Données Eloquent
+### Phase 2 : Données Eloquent
 
 ```php
 // Source de donnees reelle : la base SQLite, via Eloquent.
@@ -252,7 +252,7 @@ flowchart TD
 
 ## Étape 1 — Brancher
 
-#### Initialisation de la Phase 2
+### Initialisation de la Phase 2
 
 <br>
 
@@ -266,13 +266,13 @@ Un enum *backed* associe chaque cas à une valeur scalaire (ici une chaîne) qui
 
 Crée le dossier et le fichier `app/Enums/RecipeCategory.php` :
 
-#### Création du dossier Enums
+### Création du dossier Enums
 
 ```powershell
 mkdir app\Enums
 ```
 
-#### `app/Enums/RecipeCategory.php`
+### `app/Enums/RecipeCategory.php`
 
 ```php
 <?php
@@ -309,7 +309,7 @@ enum RecipeCategory: string
 
 Crée `app/Enums/RecipeDifficulty.php` :
 
-#### `app/Enums/RecipeDifficulty.php`
+### `app/Enums/RecipeDifficulty.php`
 
 ```php
 <?php
@@ -345,7 +345,7 @@ enum RecipeDifficulty: string
 
 ## Étape 3 — Migration de la table recipes
 
-#### Génération de la migration recipes
+### Génération de la migration recipes
 
 ```powershell
 # Genere une migration de CREATION de table
@@ -354,7 +354,7 @@ php artisan make:migration create_recipes_table
 
 Édite le fichier généré dans `database/migrations/` (préfixé d'un horodatage) :
 
-#### Migration : `create_recipes_table`
+### Migration : `create_recipes_table`
 
 ```php
 public function up(): void
@@ -405,7 +405,7 @@ public function down(): void
 
 ## Étape 4 — Migration des tables tags et recipe_tag
 
-#### Génération des migrations tags et pivot
+### Génération des migrations tags et pivot
 
 ```powershell
 php artisan make:migration create_tags_table
@@ -414,7 +414,7 @@ php artisan make:migration create_recipe_tag_table
 
 Dans la migration `create_tags_table` :
 
-#### Migration : `create_tags_table`
+### Migration : `create_tags_table`
 
 ```php
 public function up(): void
@@ -436,7 +436,7 @@ public function down(): void
 
 Dans la migration `create_recipe_tag_table`. Le nom `recipe_tag` n'est pas arbitraire : Laravel attend, par convention, les deux noms de modèles au **singulier**, **ordre alphabétique**, séparés par un underscore. Respecter cette convention évite d'avoir à configurer la relation manuellement.
 
-#### Migration : `create_recipe_tag_table`
+### Migration : `create_recipe_tag_table`
 
 ```php
 public function up(): void
@@ -467,7 +467,7 @@ public function down(): void
 
 ## Étape 5 — Exécuter les migrations
 
-#### Exécution de `php artisan migrate`
+### Exécution de `php artisan migrate`
 
 ```powershell
 # Applique toutes les migrations non encore executees
@@ -476,7 +476,7 @@ php artisan migrate
 
 Vérifie le schéma :
 
-#### Vérification du schéma SQL
+### Vérification du schéma SQL
 
 ```powershell
 # Apercu de la table recipes : colonnes, types, index
@@ -494,7 +494,7 @@ php artisan db:show
 
 ## Étape 6 — Le modèle Recipe
 
-#### Génération du modèle Recipe
+### Génération du modèle Recipe
 
 ```powershell
 php artisan make:model Recipe
@@ -502,7 +502,7 @@ php artisan make:model Recipe
 
 Édite `app/Models/Recipe.php` :
 
-#### `app/Models/Recipe.php`
+### `app/Models/Recipe.php`
 
 ```php
 <?php
@@ -572,7 +572,7 @@ class Recipe extends Model
 
 ## Étape 7 — Le modèle Tag
 
-#### Génération du modèle Tag
+### Génération du modèle Tag
 
 ```powershell
 php artisan make:model Tag
@@ -580,7 +580,7 @@ php artisan make:model Tag
 
 Édite `app/Models/Tag.php` :
 
-#### `app/Models/Tag.php`
+### `app/Models/Tag.php`
 
 ```php
 <?php
@@ -615,7 +615,7 @@ class Tag extends Model
 
 ## Étape 8 — Les factories
 
-#### Génération des factories Recipe et Tag
+### Génération des factories Recipe et Tag
 
 Une factory décrit comment fabriquer une instance crédible du modèle. Pour des titres réalistes plutôt que des mots aléatoires, on pioche dans une liste de vraies recettes.
 
@@ -626,7 +626,7 @@ php artisan make:factory TagFactory
 
 `database/factories/RecipeFactory.php` :
 
-#### `database/factories/RecipeFactory.php`
+### `database/factories/RecipeFactory.php`
 
 ```php
 <?php
@@ -685,7 +685,7 @@ class RecipeFactory extends Factory
 
 `database/factories/TagFactory.php` reste minimal ; les tags réels sont créés explicitement dans le seeder (liste fixe), donc cette factory ne sert qu'en cas de besoin ponctuel :
 
-#### `database/factories/TagFactory.php`
+### `database/factories/TagFactory.php`
 
 ```php
 <?php
@@ -719,7 +719,7 @@ class TagFactory extends Factory
 
 Le seeder peuple la base de façon reproductible. Édite `database/seeders/DatabaseSeeder.php` :
 
-#### `database/seeders/DatabaseSeeder.php`
+### `database/seeders/DatabaseSeeder.php`
 
 ```php
 <?php
@@ -759,7 +759,7 @@ class DatabaseSeeder extends Seeder
 
 Exécute le peuplement :
 
-#### Migration fresh et seeding
+### Migration fresh et seeding
 
 ```powershell
 # migrate:fresh DETRUIT et recree tout le schema, puis --seed lance le seeder.
@@ -769,13 +769,13 @@ php artisan migrate:fresh --seed
 
 Vérifie en base sans écrire de code, via le REPL Tinker :
 
-#### Ouverture de Tinker
+### Ouverture de Tinker
 
 ```powershell
 php artisan tinker
 ```
 
-#### Requêtes de test dans Tinker
+### Requêtes de test dans Tinker
 
 ```php
 // Dans tinker :
@@ -795,7 +795,7 @@ exit
 
 Ouvre `app/Http/Controllers/RecipeController.php`. Remplace le tableau en dur de la Phase 1 par une requête Eloquent.
 
-#### `app/Http/Controllers/RecipeController.php` (Passage à Eloquent)
+### `app/Http/Controllers/RecipeController.php` (Passage à Eloquent)
 
 ```php
 <?php

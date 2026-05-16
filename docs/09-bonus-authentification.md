@@ -205,7 +205,7 @@ stateDiagram-v2
 
 ## Étape 1 — Brancher et sauvegarder
 
-#### Initialisation de la Phase 9
+### Initialisation de la Phase 9
 
 L'authentification touche au schéma de base de données et aux routes. On isole tout sur une branche dédiée pour pouvoir revenir en arrière sans douleur.
 
@@ -232,7 +232,7 @@ git checkout -b phase/09-bonus-auth
 
 ## Étape 2 — Installer Laravel Breeze
 
-#### Installation du paquet Breeze
+### Installation du paquet Breeze
 
 ```powershell
 # Installer Breeze en dépendance de développement uniquement
@@ -246,7 +246,7 @@ php artisan breeze:install blade
 
 À l'issue de cette commande, Breeze a publié dans ton projet : routes d'auth, contrôleurs, vues Blade, requêtes de formulaire, et a modifié `package.json` / la configuration Vite si nécessaire.
 
-#### Migrations et compilation assets
+### Migrations et compilation assets
 ```powershell
 # Installer les dépendances front ajoutées par Breeze, puis compiler
 npm install
@@ -298,7 +298,7 @@ Concept clé à retenir : Breeze n'est **pas un package qui agit en boîte noire
 
 ## Étape 4 — Lier les recettes à un utilisateur
 
-#### Génération de la migration de liaison
+### Génération de la migration de liaison
 
 Jusqu'ici, une recette n'appartient à personne. On ajoute la colonne `user_id` à la table `recipes` **existante** (migration de modification, pas de création).
 
@@ -307,7 +307,7 @@ Jusqu'ici, une recette n'appartient à personne. On ajoute la colonne `user_id` 
 php artisan make:migration add_user_id_to_recipes_table --table=recipes
 ```
 
-#### Migration : `add_user_id_to_recipes_table`
+### Migration : `add_user_id_to_recipes_table`
 Édite la migration générée dans `database/migrations/` :
 
 ```php
@@ -340,14 +340,14 @@ public function down(): void
 > ### Limites SQLite
 > SQLite a des limites sur la modification de colonnes existantes. L'ajout d'une colonne avec clé étrangère fonctionne, mais une suppression via `down()` peut nécessiter la recréation de table sur d'anciennes versions.
 
-#### Exécution de la migration
+### Exécution de la migration
 ```powershell
 php artisan migrate
 ```
 
 Déclare maintenant les relations Eloquent.
 
-#### `app/Models/User.php`
+### `app/Models/User.php`
 Dans `app/Models/User.php`, ajoute la méthode :
 
 ```php
@@ -361,7 +361,7 @@ public function recipes(): \Illuminate\Database\Eloquent\Relations\HasMany
 }
 ```
 
-#### `app/Models/Recipe.php`
+### `app/Models/Recipe.php`
 Dans `app/Models/Recipe.php`, ajoute l'inverse :
 
 ```php
@@ -381,7 +381,7 @@ Pense aussi à ajouter `user_id` dans la propriété `$fillable` (ou l'attribut 
 
 ## Étape 5 — Protéger les routes de RecetteBox
 
-#### `routes/web.php` (Protection auth)
+### `routes/web.php` (Protection auth)
 
 Ouvre `routes/web.php`. Les routes RecetteBox des phases 01 à 07 doivent passer derrière le middleware `auth`.
 
@@ -412,7 +412,7 @@ Teste : déconnecté, l'accès à `/recettes` doit rediriger vers `/login`. Conn
 
 ## Étape 6 — Scoper les données dans les composants Livewire
 
-#### `resources/views/livewire/pages/recipe-index.blade.php` (Scope utilisateur)
+### `resources/views/livewire/pages/recipe-index.blade.php` (Scope utilisateur)
 
 Le point le plus important du bonus. Sans cette étape, tous les utilisateurs verraient toutes les recettes : l'authentification serait cosmétique.
 
@@ -441,7 +441,7 @@ Applique le même `where('user_id', Auth::id())` :
 - au composant de tableau de bord (Phase 6) pour que les statistiques ne comptent que les recettes de l'utilisateur ;
 - à toute création de recette (Phase 5), où il faut **affecter** `user_id` :
 
-#### Utilisation de la Policy dans un composant
+### Utilisation de la Policy dans un composant
 ```php
 // Lors de la création d'une recette dans le composant CRUD de la Phase 5
 Recipe::create([
@@ -463,7 +463,7 @@ Recipe::create([
 
 ## Étape 7 — Autorisation fine avec une Policy
 
-#### Génération de la Policy Recipe
+### Génération de la Policy Recipe
 ```powershell
 # Générer une policy liée au modèle Recipe
 php artisan make:policy RecipePolicy --model=Recipe
@@ -471,7 +471,7 @@ php artisan make:policy RecipePolicy --model=Recipe
 
 Dans `app/Policies/RecipePolicy.php` :
 
-#### `app/Policies/RecipePolicy.php`
+### `app/Policies/RecipePolicy.php`
 ```php
 /**
  * Seul le propriétaire peut modifier sa recette.
@@ -505,7 +505,7 @@ $this->authorize('update', $recipe);
 
 ## Étape 8 — Adapter le seeder
 
-#### `database/seeders/DatabaseSeeder.php` (Seeding avec utilisateurs)
+### `database/seeders/DatabaseSeeder.php` (Seeding with users)
 
 Le seeder de la Phase 2 crée des recettes sans `user_id`. Désormais, une recette sans propriétaire n'est visible par personne (le scoping de l'étape 6 l'exclut). On corrige le seeder pour qu'il crée d'abord un utilisateur de démonstration.
 
@@ -532,7 +532,7 @@ public function run(): void
 }
 ```
 
-#### Reset global et ré-exécution du seeder
+### Reset global et ré-exécution du seeder
 ```powershell
 # Recrée le schéma et réinjecte des données cohérentes avec l'auth
 php artisan migrate:fresh --seed
