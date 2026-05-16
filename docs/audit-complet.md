@@ -136,13 +136,34 @@
 
 <br>
 
-## 7. Conclusion et Perspectives
+## 7. Sécurité et Cybersécurité
+
+**Attentes** : Une application résiliente face aux attaques courantes (OWASP Top 10), garantissant la confidentialité et l'intégrité des données utilisateurs.
+
+**Analyse** : L'examen du code révèle une exploitation rigoureuse des mécanismes de sécurité natifs de Laravel 13, couplée à une logique de "Least Privilege" dans les composants Livewire.
+
+> [!TIP]
+> ### Protections validées
+> - **Injections (SQLi)** : Utilisation systématique de l'ORM Eloquent (requêtes préparées) dans tous les modèles.
+> - **Failles XSS** : Échappement automatique par Blade et Livewire. Les entrées utilisateurs sont traitées comme du texte brut par défaut.
+> - **CSRF & Mass Assignment** : Protection active sur toutes les routes via les middlewares et utilisation stricte de `$fillable` dans **[Recipe.php](file:///g:/www/projects/laravel/recettebox/app/Models/Recipe.php)**.
+> - **Autorisation (RBAC)** : Utilisation des **Policies** Laravel pour empêcher un utilisateur d'accéder aux recettes d'un tiers.
+
+**Conclusion** : Le niveau de sécurité est excellent pour une application web moderne. L'intégration de Laravel Breeze garantit en plus un hachage robuste des mots de passe (Bcrypt) et une protection contre les attaques par force brute.
+
+<br>
+
+---
+
+<br>
+
+## 8. Conclusion et Perspectives
 
 **Synthèse de l'Audit** : 
 Le projet RecetteBox n'est pas une simple démonstration de code ; c'est un écosystème cohérent où chaque décision architecturale sert un objectif précis. 
 
 **Maturité Technique** : 
-L'analyse croisée de la modélisation (Section 2) et de l'interface (Section 3) révèle une harmonie rare : les données sont strictement typées via les Enums PHP 8.4, ce qui permet à l'interface de réagir de manière prédictive et fluide. L'ajout de l'authentification (Section 5) et la couverture par les tests automatisés (Section 6) prouvent la **solidité et la maintenabilité du projet**.
+L'analyse croisée de la modélisation (Section 2) et de l'interface (Section 3) révèle une harmonie rare : les données sont strictement typées via les Enums PHP 8.4, ce qui permet à l'interface de réagir de manière prédictive et fluide. L'ajout de l'authentification (Section 5), la couverture par les tests (Section 6) et la rigueur sécuritaire (Section 7) prouvent la **solidité du projet**.
 
 **Rigueur Documentaire** :
 Le respect du standard ABI (Section 4) élève ce projet au-delà du simple développement technique pour en faire une base de connaissance transmissible et professionnelle.
