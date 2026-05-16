@@ -1,6 +1,15 @@
 # Phase 0 — Préparation de l'environnement Windows 11
 
-> Objectif : disposer d'un poste Windows 11 capable de compiler, exécuter et servir une application Laravel 13 + Livewire 4 + Tailwind 4, sans Docker ni WSL, avec une empreinte mémoire minimale.
+> [!IMPORTANT]
+> ### 🎯 Objectif
+> Disposer d'un poste de travail capable de compiler, exécuter et servir une application Laravel 13 + Livewire 4 + Tailwind 4, sans Docker ni WSL, avec une empreinte mémoire minimale.
+
+> [!TIP]
+> ### 🍎 Vous êtes sur MacOS ou 🐧 Linux ?
+> Bien que ce guide détaille l'installation sous Windows 11, les concepts sont identiques.
+> - **MacOS** : Nous recommandons vivement **[Laravel Herd](https://herd.laravel.com/)** pour une installation en un clic de PHP, Composer et Node.js.
+> - **Linux** : Utilisez votre gestionnaire de paquets (`apt`, `pacman`, `dnf`) pour installer PHP 8.4, Node.js 22 et SQLite 3.
+> - **Toutes plateformes** : Une fois l'environnement prêt, vous pouvez passer directement à la **Phase 1**.
 
 <br>
 
@@ -344,7 +353,8 @@ git commit -m "docs: ajouter README et documentation Phase 0"
 git checkout -b phase/00-environnement
 ```
 
-> **Note.** On ne pousse rien sur GitHub à ce stade : ce sera fait à la fin de la Phase 1, quand le code Laravel existe.
+> [!NOTE]
+> On ne pousse rien sur GitHub à ce stade : ce sera fait à la fin de la Phase 1, quand le code Laravel existe.
 
 <br>
 

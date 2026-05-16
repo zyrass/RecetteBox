@@ -1,6 +1,13 @@
 # Phase 2 — Modèle de données : Eloquent, migrations, enums, factory, seeder
 
-> Objectif : remplacer le tableau de recettes codé en dur dans le contrôleur (Phase 1) par une vraie persistance SQLite, via une migration, un modèle Eloquent, des enums PHP 8.3, une factory et un seeder. À la fin, 30 recettes réalistes sont en base et s'affichent sans changer la route ni la vue dans leur structure.
+![Phase 2](https://img.shields.io/badge/Phase-02-blue?style=flat-square)
+![Laravel](https://img.shields.io/badge/Laravel-13.x-FF2D20?style=flat-square&logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8.4-777BB4?style=flat-square&logo=php)
+![SQLite](https://img.shields.io/badge/SQLite-3.x-003B57?style=flat-square&logo=sqlite)
+
+> [!IMPORTANT]
+> ### 🎯 Objectif
+> Remplacer le tableau de recettes codé en dur dans le contrôleur (Phase 1) par une vraie persistance SQLite, via une migration, un modèle Eloquent, des enums PHP 8.3, une factory et un seeder. À la fin, 30 recettes réalistes sont en base et s'affichent sans changer la route ni la vue dans leur structure.
 
 > Pré-requis strict : la Phase 1 est terminée et validée. La page `/recettes` affiche les 4 recettes en dur via `RecipeController@index`.
 
@@ -324,7 +331,9 @@ enum RecipeDifficulty: string
 }
 ```
 
-> Pourquoi un enum plutôt qu'une chaîne libre : il rend impossible l'insertion d'une catégorie invalide depuis le code, fournit l'autocomplétion dans l'éditeur, et centralise la liste des valeurs. C'est une garantie d'intégrité côté application.
+> [!NOTE]
+> ### Pourquoi un enum ?
+> Utiliser un enum plutôt qu'une chaîne libre rend impossible l'insertion d'une catégorie invalide, fournit l'autocomplétion, et centralise les valeurs. C'est une garantie d'intégrité pour l'application.
 
 <br>
 
@@ -642,7 +651,9 @@ class RecipeFactory extends Factory
 }
 ```
 
-> La liste contient 30 titres et le seeder en crée exactement 30 : `unique()` ne s'épuisera pas. Si tu augmentes le nombre de recettes, agrandis la liste ou retire `unique()`.
+> [!TIP]
+> ### Unicité des données
+> La liste contient 30 titres et le seeder en crée exactement 30. Si tu augmentes ce nombre, pense à agrandir la liste de titres ou à retirer la contrainte `unique()`.
 
 `database/factories/TagFactory.php` reste minimal ; les tags réels sont créés explicitement dans le seeder (liste fixe), donc cette factory ne sert qu'en cas de besoin ponctuel :
 

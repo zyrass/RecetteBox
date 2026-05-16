@@ -1,6 +1,11 @@
 # Phase 9 — Bonus : Authentification avec Laravel Breeze
 
-> Objectif : transformer le carnet de recettes partagé en carnets individuels protégés par compte utilisateur, en greffant l'authentification sur une application déjà complète, sans casser le travail des phases 01 à 07.
+![Phase 9](https://img.shields.io/badge/Phase-09-purple?style=flat-square)
+![Laravel Breeze](https://img.shields.io/badge/Laravel_Breeze-latest-FF2D20?style=flat-square&logo=laravel)
+
+> [!IMPORTANT]
+> ### 🎯 Objectif
+> Transformer le carnet de recettes partagé en carnets individuels protégés par compte utilisateur, en greffant l'authentification sur une application déjà complète, sans casser le travail des phases 01 à 07.
 
 > Pré-requis strict : les phases 00 à 07 sont terminées et validées. Cette phase est un **bonus optionnel** : RecetteBox fonctionne parfaitement sans elle.
 
@@ -213,7 +218,9 @@ git status
 git checkout -b phase/09-bonus-auth
 ```
 
-> Règle du projet : cette branche n'est **pas** fusionnée dans `main` tant que tu n'es pas certain que le cœur reste stable. Le bonus doit pouvoir être abandonné sans conséquence.
+> [!IMPORTANT]
+> ### Règle du projet
+> Cette branche n'est **pas** fusionnée dans `main` tant que tu n'es pas certain que le cœur reste stable. Le bonus doit pouvoir être abandonné sans conséquence.
 
 <br>
 
@@ -321,7 +328,9 @@ public function down(): void
 }
 ```
 
-> SQLite a des limites sur la modification de colonnes existantes. L'ajout d'une colonne avec clé étrangère fonctionne, mais une suppression via `down()` peut nécessiter la recréation de table sur d'anciennes versions. En cas d'échec du rollback, voir Pièges courants.
+> [!WARNING]
+> ### Limites SQLite
+> SQLite a des limites sur la modification de colonnes existantes. L'ajout d'une colonne avec clé étrangère fonctionne, mais une suppression via `down()` peut nécessiter la recréation de table sur d'anciennes versions.
 
 Applique la migration :
 
@@ -428,7 +437,9 @@ Recipe::create([
 ]);
 ```
 
-> Alternative plus robuste à connaître : passer par la relation, `Auth::user()->recipes()->create([...])`, qui renseigne `user_id` automatiquement. Tu peux refactorer ainsi une fois le scoping compris.
+> [!TIP]
+> ### Alternative robuste
+> Passer par la relation, `Auth::user()->recipes()->create([...])`, qui renseigne `user_id` automatiquement. Tu peux refactorer ainsi une fois le scoping compris.
 
 <br>
 

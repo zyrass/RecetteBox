@@ -1,6 +1,12 @@
 # Phase 3 — Premier composant Livewire : Tailwind 4 et Single-File Component
 
-> Objectif : installer Tailwind 4 puis Livewire 4, et convertir la liste statique de la Phase 2 en un composant full-stack (Single-File Component), sur exactement les mêmes données. Aucune interactivité ici : la recherche et les filtres arrivent en Phase 4. Cette phase concerne la mécanique du composant et le style, pas la réactivité.
+![Phase 3](https://img.shields.io/badge/Phase-03-blue?style=flat-square)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-06B6D4?style=flat-square&logo=tailwindcss)
+![Livewire](https://img.shields.io/badge/Livewire-4.x-FB70A9?style=flat-square&logo=livewire)
+
+> [!IMPORTANT]
+> ### 🎯 Objectif
+> Installer Tailwind 4 puis Livewire 4, et convertir la liste statique de la Phase 2 en un composant full-stack (Single-File Component), sur exactement les mêmes données. Aucune interactivité ici : la recherche et les filtres arrivent en Phase 4. Cette phase concerne la mécanique du composant et le style, pas la réactivité.
 
 > Pré-requis strict : la Phase 2 est terminée. `/recettes` affiche 30 recettes réelles via `RecipeController@index`, sans style.
 
@@ -240,7 +246,9 @@ Lance le serveur de build Vite. Il doit rester actif en parallèle de `php artis
 npm run dev
 ```
 
-> Astuce projet : Laravel fournit un script combiné. `composer run dev` lance en parallèle le serveur PHP, le worker de queue et Vite. Tu peux l'utiliser à la place de deux terminaux séparés, une fois à l'aise.
+> [!TIP]
+> ### Astuce projet
+> Laravel fournit un script combiné. `composer run dev` lance en parallèle le serveur PHP, le worker de queue et Vite. Tu peux l'utiliser à la place de deux terminaux séparés, une fois à l'aise.
 
 <br>
 
@@ -364,7 +372,9 @@ new class extends Component {
 </div>
 ```
 
-> Un composant Livewire doit avoir **un seul élément racine** dans son markup (ici le `<div>`). Plusieurs éléments frères à la racine provoquent une erreur. C'est une contrainte structurelle de Livewire, pas un détail de style.
+> [!IMPORTANT]
+> ### Racine unique
+> Un composant Livewire doit avoir **un seul élément racine** dans son markup (ici le `<div>`). Plusieurs éléments frères à la racine provoquent une erreur. C'est une contrainte structurelle de Livewire.
 
 <br>
 

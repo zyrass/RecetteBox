@@ -1,6 +1,11 @@
 # Phase 1 — Squelette Laravel : le MVC sans magie
 
-> Objectif : créer le projet Laravel 13, comprendre le cycle requête-réponse, et afficher une première liste de recettes **en dur**, sans base de données, sans Livewire, sans Tailwind. On isole le patron MVC avant d'y greffer la moindre couche réactive.
+![Phase 1](https://img.shields.io/badge/Phase-01-blue?style=flat-square)
+![Laravel](https://img.shields.io/badge/Laravel-13.x-FF2D20?style=flat-square&logo=laravel)
+
+> [!IMPORTANT]
+> ### 🎯 Objectif
+> Créer le projet Laravel 13, comprendre le cycle requête-réponse, et afficher une première liste de recettes **en dur**, sans base de données, sans Livewire, sans Tailwind. On isole le patron MVC avant d'y greffer la moindre couche réactive.
 
 > Pré-requis strict : la Phase 0 est terminée et validée. Le dossier `recettebox/` existe, contient `README.md` + `docs/`, est sous Git, branche `phase/00-environnement`.
 
@@ -240,7 +245,9 @@ git add .
 git commit -m "feat: generer le squelette Laravel 13 (sqlite, sans starter kit)"
 ```
 
-> Note importante sur le `.gitignore` : Laravel fournit son propre `.gitignore` qui exclut `/vendor`, `/node_modules`, `.env`. C'est correct et voulu : ces dossiers se régénèrent via `composer install` et `npm install`. Ne les versionne jamais.
+> [!IMPORTANT]
+> ### Note sur le .gitignore
+> Laravel fournit son propre `.gitignore` qui exclut `/vendor`, `/node_modules`, `.env`. C'est correct et voulu : ces dossiers se régénèrent via `composer install` et `npm install`. Ne les versionne jamais.
 
 <br>
 
@@ -429,7 +436,9 @@ Route::get('/', function () {
 Route::get('/recettes', [RecipeController::class, 'index']);
 ```
 
-> Note Laravel 13 : tu pourrais aussi attacher middleware et configuration via des attributs PHP 8 directement sur le contrôleur. On reste sur la syntaxe classique, plus universelle et mieux documentée pour l'apprentissage. L'approche par attributs sera mentionnée quand elle apportera un gain concret.
+> [!NOTE]
+> ### Syntaxe Laravel 13
+> Tu pourrais aussi attacher middleware et configuration via des attributs PHP 8 directement sur le contrôleur. On reste sur la syntaxe classique, plus universelle et mieux documentée pour l'apprentissage.
 
 <br>
 
@@ -575,7 +584,9 @@ Réécris `resources/views/recipes/index.blade.php` pour qu'elle hérite du layo
 
 Recharge : visuellement très proche, mais la structure HTML est désormais mutualisée. Toute nouvelle page réutilisera `layouts.app`.
 
-> Évolution à connaître : Laravel propose aussi les **composants Blade** (`<x-app-layout>`), une syntaxe plus moderne que `@extends`/`@yield`. On reste sur l'héritage classique en Phase 1 car il rend l'imbrication parent/enfant explicite, ce qui est plus formateur. Les composants Blade seront introduits quand ils apporteront un gain réel.
+> [!TIP]
+> ### Évolution à connaître
+> Laravel propose aussi les **composants Blade** (`<x-app-layout>`), une syntaxe plus moderne que `@extends`/`@yield`. On reste sur l'héritage classique en Phase 1 car il rend l'imbrication parent/enfant explicite, ce qui est plus formateur.
 
 <br>
 
