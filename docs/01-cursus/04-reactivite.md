@@ -162,8 +162,18 @@ flowchart TD
 
 ## Étape 1 — Brancher
 
+### Initialisation de la Phase 4
+
+#### Windows (PowerShell)
 ```powershell
 cd $env:USERPROFILE\Documents\Projets\recettebox
+git status
+git checkout -b phase/04-reactivite
+```
+
+#### macOS / Linux (Terminal)
+```bash
+cd ~/Documents/Projets/recettebox
 git status
 git checkout -b phase/04-reactivite
 ```
@@ -172,7 +182,11 @@ git checkout -b phase/04-reactivite
 
 ## Étape 2 — Recherche en temps réel
 
-Ajoute une propriété publique `$search` au composant et injecte-la dans la requête. Modifie le bloc PHP du SFC `recipe-index` :
+Ajoute une propriété publique `$search` au composant et injecte-la dans la requête.
+
+### Logique PHP : Le filtre search
+
+#### resources/views/livewire/pages/recipe-index.blade.php
 
 ```php
 <?php
@@ -209,7 +223,9 @@ class extends Component {
 ?>
 ```
 
-Dans le markup, ajoute le champ de recherche juste avant la grille :
+### Interface Blade : Le champ de recherche
+
+#### resources/views/livewire/pages/recipe-index.blade.php
 
 ```blade
 <div class="mx-auto max-w-5xl px-4 py-8">
@@ -238,7 +254,7 @@ Recharge, tape dans le champ : ta liste se filtre sans rechargement de page. La 
 
 ## Étape 3 — Le piège wire:model de Livewire 4
 
-Changement de comportement introduit par Livewire 4, à connaître absolument :
+### Différence de comportement v3 vs v4
 
 | Version | Comportement de `wire:model` |
 |---|---|
@@ -265,7 +281,9 @@ Dans RecetteBox, toutes nos directives sont posées directement sur les champs :
 
 Ajoute trois propriétés de filtre. Décision pédagogique à comprendre : bien que le modèle `Recipe` caste `category` et `difficulty` en enum, **tes propriétés de filtre restent des chaînes**. Un `<select>` HTML renvoie toujours une chaîne ; on compare cette chaîne à la colonne (qui stocke la valeur de l'enum). Inutile de caster côté filtre : cela ajouterait de la complexité sans gain réel.
 
-Complète le bloc PHP :
+### Mise à jour de la logique PHP
+
+#### resources/views/livewire/pages/recipe-index.blade.php
 
 ```php
 use App\Enums\RecipeCategory;
@@ -326,7 +344,9 @@ public function difficulties()
 }
 ```
 
-Markup des filtres (placé après le champ de recherche) :
+### Ajout des menus déroulants et checkboxes
+
+#### resources/views/livewire/pages/recipe-index.blade.php
 
 ```blade
 <div class="mb-6 flex flex-wrap gap-3">
@@ -363,6 +383,10 @@ Markup des filtres (placé après le champ de recherche) :
 
 Sans rien de plus, recharger la page perd les filtres. L'attribut `#[Url]` synchronise une propriété avec la query string : l'état devient partageable et survit au rechargement.
 
+### Utilisation de l'attribut #[Url]
+
+#### resources/views/livewire/pages/recipe-index.blade.php
+
 ```php
 use Livewire\Attributes\Url;
 
@@ -391,6 +415,10 @@ Teste : applique des filtres, observe l'URL changer, recharge la page. Les filtr
 
 Ajoute deux propriétés de tri et une méthode pour basculer l'ordre. Le tri n'a pas besoin d'être dans l'URL ici (choix assumé pour limiter le bruit ; tu peux ajouter `#[Url]` si tu veux le partager aussi).
 
+### Logique PHP du tri
+
+#### resources/views/livewire/pages/recipe-index.blade.php
+
 ```php
 public string $sortField = 'created_at';
 public string $sortDirection = 'desc';
@@ -417,7 +445,9 @@ Intègre le tri dans la requête de `recipes()`, en remplaçant `->latest()` :
 ->orderBy($this->sortField, $this->sortDirection)
 ```
 
-Markup : une rangée de boutons de tri.
+### Interface de tri
+
+#### resources/views/livewire/pages/recipe-index.blade.php
 
 ```blade
 <div class="mb-4 flex gap-2 text-sm">
@@ -447,6 +477,10 @@ Markup : une rangée de boutons de tri.
 ## Étape 7 — Pagination
 
 Afficher plus de 30 recettes d'un bloc ne tient pas à l'échelle. Tu vas paginer tes résultats via le trait `WithPagination`. Dans un Single-File Component, le trait s'utilise dans la classe anonyme comme dans une classe normale.
+
+### Logique PHP de pagination
+
+#### resources/views/livewire/pages/recipe-index.blade.php
 
 ```php
 use Livewire\WithPagination;
@@ -490,7 +524,9 @@ class extends Component {
 };
 ```
 
-Ajoute les liens de pagination après la grille :
+### Liens de pagination Blade
+
+#### resources/views/livewire/pages/recipe-index.blade.php
 
 ```blade
 {{-- $this->recipes est maintenant un paginateur.
@@ -509,6 +545,10 @@ Ajoute les liens de pagination après la grille :
 
 Ajoute une méthode de remise à zéro et un compteur. Le compteur utilise `total()` du paginateur.
 
+### Méthode resetFilters
+
+#### resources/views/livewire/pages/recipe-index.blade.php
+
 ```php
 /**
  * Remet tous les filtres a leur valeur par defaut.
@@ -520,7 +560,9 @@ public function resetFilters(): void
 }
 ```
 
-Markup, au-dessus de la grille :
+### Compteur et bouton de remise à zéro
+
+#### resources/views/livewire/pages/recipe-index.blade.php
 
 ```blade
 <div class="mb-4 flex items-center justify-between text-sm text-gray-600">
@@ -539,6 +581,10 @@ Markup, au-dessus de la grille :
 ## Étape 9 — Styliser la barre de filtres
 
 Regroupe recherche, filtres et tri dans un encart cohérent. Remplace l'empilement actuel par un conteneur unique :
+
+### Refonte visuelle de la barre d'outils
+
+#### resources/views/livewire/pages/recipe-index.blade.php
 
 ```blade
 <div class="mb-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
@@ -586,7 +632,9 @@ git commit -m "feat: recherche temps reel, filtres, tri, pagination, filtres dan
 
 ## Le composant complet de cette phase
 
-Structure finale du bloc PHP du SFC `recipe-index`, pour vérification :
+### Code source final du SFC
+
+#### resources/views/livewire/pages/recipe-index.blade.php
 
 ```php
 <?php
