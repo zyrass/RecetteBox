@@ -112,13 +112,33 @@
 
 <br>
 
-## 6. Conclusion et Perspectives
+## 6. Fiabilité et Tests (Pest)
+
+**Attentes** : Une suite de tests automatisés couvrant la logique métier (Unit) et les interactions utilisateurs (Feature), garantissant la stabilité à long terme et facilitant le refactoring.
+
+**Analyse** : L'implémentation de la **[Phase 08](file:///g:/www/projects/laravel/recettebox/docs/01-cursus/08-tests.md)** via le framework **Pest** [^1] apporte une couche de sécurité indispensable. L'analyse des tests montre une couverture des scénarios critiques (validation des Enums, recherche Livewire, calculs du Dashboard).
+
+> [!TIP]
+> ### Qualité de la suite de tests
+> - **Syntaxe Expressive** : Utilisation de Pest pour une lecture quasi-littérale des spécifications.
+> - **Tests de Composants** : Validation des interactions Livewire sans avoir besoin d'un navigateur (tests Feature rapides).
+> - **Isolation** : Utilisation systématique de bases de données SQLite en mémoire pour des performances optimales.
+
+**Conclusion** : La stratégie de test adoptée est pragmatique et efficace. Elle garantit que toute évolution future ne cassera pas le cœur de l'application, élevant le projet au rang de "Production-Ready".
+
+<br>
+
+---
+
+<br>
+
+## 7. Conclusion et Perspectives
 
 **Synthèse de l'Audit** : 
 Le projet RecetteBox n'est pas une simple démonstration de code ; c'est un écosystème cohérent où chaque décision architecturale sert un objectif précis. 
 
 **Maturité Technique** : 
-L'analyse croisée de la modélisation (Section 2) et de l'interface (Section 3) révèle une harmonie rare : les données sont strictement typées via les Enums PHP 8.4, ce qui permet à l'interface de réagir de manière prédictive et fluide. L'ajout de l'authentification (Section 5) et la couverture par les tests automatisés (Phase 08) prouvent la **solidité et la maintenabilité du projet**.
+L'analyse croisée de la modélisation (Section 2) et de l'interface (Section 3) révèle une harmonie rare : les données sont strictement typées via les Enums PHP 8.4, ce qui permet à l'interface de réagir de manière prédictive et fluide. L'ajout de l'authentification (Section 5) et la couverture par les tests automatisés (Section 6) prouvent la **solidité et la maintenabilité du projet**.
 
 **Rigueur Documentaire** :
 Le respect du standard ABI (Section 4) élève ce projet au-delà du simple développement technique pour en faire une base de connaissance transmissible et professionnelle.
