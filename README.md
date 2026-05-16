@@ -197,7 +197,7 @@ recettebox/
 │   │   ├── 04-reactivite.md          # Recherche et filtres
 │   │   ├── 05-crud-alpine.md         # Édition et Modales
 │   │   ├── 06-dashboard.md           # Statistiques
-│   │   ├── 07-finitions.md           # [À faire] Toasts et Dark mode
+│   │   ├── 07-finitions.md           # Toasts et Dark mode
 │   │   └── 08-tests.md               # [À faire] Pest / Tests unitaires
 │   └── 09-bonus/                     # Modules avancés
 │       └── 09-authentification.md

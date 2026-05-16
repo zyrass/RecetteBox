@@ -7,7 +7,7 @@
 > ### Objectif
 > Transformer le carnet de recettes partagé en carnets individuels protégés par compte utilisateur, en greffant l'authentification sur une application déjà complète, sans casser le travail des phases 01 à 07.
 
-> Pré-requis strict : les phases du cursus (00 à 03+) sont terminées et validées. Cette phase est un **bonus optionnel** : RecetteBox fonctionne parfaitement sans elle.
+> Pré-requis strict : les phases du cursus (**00 à 07**) sont terminées et validées. Cette phase est un **bonus optionnel** : RecetteBox fonctionne parfaitement sans elle.
 
 <br>
 
