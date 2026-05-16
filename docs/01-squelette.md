@@ -193,6 +193,8 @@ flowchart TD
 
 Problème annoncé en fin de Phase 0 : `laravel new recettebox` veut créer un dossier neuf, or `recettebox/` existe déjà avec `.git`, `README.md` et `docs/`. L'installeur refuse d'écrire dans un dossier non vide. On génère donc Laravel dans un dossier temporaire **à côté**, puis on fusionne en préservant l'historique Git.
 
+#### Création du projet temporaire
+
 ```powershell
 # Se placer dans le dossier PARENT du projet (pas dans recettebox/)
 cd $env:USERPROFILE\Documents\Projets
@@ -212,6 +214,8 @@ L'installeur pose des questions interactives. Réponds ainsi :
 
 Une fois `Application ready!` affiché, fusionne le projet généré dans ton repository existant :
 
+#### Fusion des fichiers avec robocopy
+
 ```powershell
 # Copier tout le contenu de recettebox-tmp DANS recettebox,
 # SANS ecraser le dossier .git ni la documentation existante.
@@ -228,6 +232,8 @@ cd recettebox
 
 Vérifie que rien n'a été écrasé :
 
+#### Vérification de la structure du repository
+
 ```powershell
 # README.md et docs/ doivent toujours etre la, AINSI QUE
 # la nouvelle arborescence Laravel (app, routes, resources, etc.)
@@ -235,6 +241,8 @@ git status
 ```
 
 Git va lister une grande quantité de nouveaux fichiers (tout Laravel). C'est attendu. Commit :
+
+#### Premier commit du squelette Laravel
 
 ```powershell
 # Basculer sur la branche de la Phase 1
@@ -261,6 +269,8 @@ Comme tu as choisi SQLite à l'installation, Laravel a déjà créé `database/d
 
 Ouvre le fichier `.env` à la racine et confirme :
 
+#### Fichier `.env` (Configuration SQLite)
+
 ```dotenv
 # Le pilote de base. SQLite ne demande ni hote, ni port, ni mot de passe.
 DB_CONNECTION=sqlite
@@ -270,6 +280,8 @@ DB_CONNECTION=sqlite
 ```
 
 Vérifie que la connexion répond :
+
+#### Vérification de la base de données
 
 ```powershell
 # Doit afficher la liste des tables systeme deja migrees,
@@ -284,6 +296,8 @@ php artisan db:show
 <br>
 
 ## Étape 3 — Lancer le serveur et voir la page par défaut
+
+#### Lancement du serveur de développement
 
 ```powershell
 # Demarre le serveur de developpement integre de Laravel
@@ -347,6 +361,8 @@ flowchart LR
 
 Avant de créer un contrôleur, on écrit une route « fermée » (closure) pour voir le mécanisme nu. Ouvre `routes/web.php`.
 
+#### `routes/web.php` (Closure simple)
+
 ```php
 <?php
 
@@ -377,12 +393,16 @@ Recharge `http://127.0.0.1:8000/recettes`. Tu dois voir le texte. Tu viens de pr
 
 ## Étape 6 — Déplacer la logique dans un contrôleur
 
+#### Génération du RecipeController
+
 ```powershell
 # Genere app/Http/Controllers/RecipeController.php
 php artisan make:controller RecipeController
 ```
 
 Édite `app/Http/Controllers/RecipeController.php` :
+
+#### `app/Http/Controllers/RecipeController.php`
 
 ```php
 <?php
@@ -421,6 +441,8 @@ class RecipeController extends Controller
 
 Modifie maintenant la route pour qu'elle pointe vers ce contrôleur, dans `routes/web.php` :
 
+#### `routes/web.php` (Liaison au contrôleur)
+
 ```php
 <?php
 
@@ -450,12 +472,16 @@ Route::get('/recettes', [RecipeController::class, 'index']);
 
 La route renvoie `view('recipes.index', ...)`, mais ce fichier n'existe pas encore. Crée l'arborescence :
 
+#### Création du dossier des vues
+
 ```powershell
 # Cree le sous-dossier des vues de recettes
 mkdir resources\views\recipes
 ```
 
 Crée le fichier `resources/views/recipes/index.blade.php` avec un contenu minimal pour valider que la vue se charge :
+
+#### `resources/views/recipes/index.blade.php` (HTML brut)
 
 ```blade
 {{-- Ceci est un commentaire Blade : "il n\'apparait pas dans le HTML genere" --}}
@@ -483,6 +509,8 @@ Recharge `http://127.0.0.1:8000/recettes`. Tu dois voir le titre. La chaîne rou
 ## Étape 8 — Passer des données du contrôleur à la vue
 
 Le contrôleur transmet déjà `$recipes`. On l'exploite dans la vue avec les directives Blade. Remplace le corps de `resources/views/recipes/index.blade.php` :
+
+#### `resources/views/recipes/index.blade.php` (Directives Blade)
 
 ```blade
 <!DOCTYPE html>
@@ -529,6 +557,8 @@ Recharge la page : les quatre recettes s'affichent. Tu viens de boucler le MVC c
 
 Répéter `<!DOCTYPE html>`, `<head>`, etc. dans chaque vue ne tient pas. Blade fournit l'héritage de gabarit. On crée un layout maître et un style minimal (toujours sans Tailwind, qui arrive en Phase 3).
 
+#### `resources/views/layouts/app.blade.php` (Layout parent)
+
 Crée `resources/views/layouts/app.blade.php` :
 
 ```blade
@@ -554,6 +584,8 @@ Crée `resources/views/layouts/app.blade.php` :
 ```
 
 Réécris `resources/views/recipes/index.blade.php` pour qu'elle hérite du layout :
+
+#### `resources/views/recipes/index.blade.php` (Héritage)
 
 ```blade
 {{-- @extends indique le layout parent dont cette vue herite --}}
@@ -596,6 +628,8 @@ Recharge : visuellement très proche, mais la structure HTML est désormais mutu
 
 ## Étape 10 — Nommer la route
 
+#### `routes/web.php` (Route nommée)
+
 Coder l'URL `/recettes` en dur dans des liens est fragile : si l'URL change, tout casse. On nomme la route. Dans `routes/web.php` :
 
 ```php
@@ -607,6 +641,8 @@ Route::get('/recettes', [RecipeController::class, 'index'])->name('recipes.index
 
 Vérifie que la route nommée est bien enregistrée :
 
+#### Liste des routes enregistrées
+
 ```powershell
 # Liste toutes les routes ; tu dois voir la colonne Name = recipes.index
 php artisan route:list
@@ -615,6 +651,8 @@ php artisan route:list
 Tu pourras, dès la Phase 3, écrire `route('recipes.index')` dans tes vues et composants au lieu de chemins en dur.
 
 Commit final de la phase :
+
+#### Finalisation de la Phase 1
 
 ```powershell
 git add .

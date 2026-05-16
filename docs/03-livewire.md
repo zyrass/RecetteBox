@@ -186,11 +186,7 @@ flowchart TD
 
 ## Étape 1 — Brancher
 
-```powershell
-cd $env:USERPROFILE\Documents\Projets\recettebox
-git status
-git checkout -b phase/03-livewire
-```
+#### Initialisation de la Phase 3
 
 <br>
 
@@ -202,12 +198,11 @@ git checkout -b phase/03-livewire
 
 Le projet ayant été créé **sans starter kit**, Tailwind n'est pas présent. On suit la procédure officielle Tailwind 4 pour Laravel + Vite.
 
-```powershell
-# Installe Tailwind 4 et son plugin Vite officiel
-npm install tailwindcss @tailwindcss/vite
-```
+#### Installation de Tailwind CSS 4
 
 Édite `vite.config.js` à la racine pour enregistrer le plugin Tailwind :
+
+#### `vite.config.js`
 
 ```javascript
 import { defineConfig } from 'vite';
@@ -227,6 +222,8 @@ export default defineConfig({
 
 Remplace le contenu de `resources/css/app.css` par l'import Tailwind 4 et les directives de scan. En Tailwind 4, il n'y a plus de `tailwind.config.js` : la configuration vit dans le CSS.
 
+#### `resources/css/app.css`
+
 ```css
 /* Importe tout Tailwind 4 en une ligne */
 @import "tailwindcss";
@@ -240,6 +237,8 @@ Remplace le contenu de `resources/css/app.css` par l'import Tailwind 4 et les di
 ```
 
 Lance le serveur de build Vite. Il doit rester actif en parallèle de `php artisan serve` (deux terminaux distincts).
+
+#### Lancement de Vite
 
 ```powershell
 # Compile les assets et surveille les changements en continu
@@ -262,11 +261,15 @@ Point pédagogique important. En Phase 1, le layout `resources/views/layouts/app
 
 Livewire 4 cherche par défaut son layout dans `resources/views/components/layouts/app.blade.php`. Crée cette arborescence :
 
+#### Création du dossier de layout Livewire
+
 ```powershell
 mkdir resources\views\components\layouts
 ```
 
 Crée `resources/views/components/layouts/app.blade.php` :
+
+#### `resources/views/components/layouts/app.blade.php`
 
 ```blade
 <!DOCTYPE html>
@@ -300,14 +303,13 @@ Tu peux conserver l'ancien `resources/views/layouts/app.blade.php` de la Phase 1
 
 ## Étape 4 — Installer Livewire 4
 
-```powershell
-# Installe le paquet Livewire 4
-composer require livewire/livewire
-```
+#### Installation de Livewire 4
 
 Livewire 4 est « zéro configuration » : il auto-injecte son JavaScript et Alpine.js dans les pages contenant un composant. Aucune directive `@livewireScripts` à ajouter manuellement dans le cas standard.
 
 Vérifie la version installée :
+
+#### Vérification de Livewire
 
 ```powershell
 # Doit afficher Livewire dans la section "Livewire" avec une version 4.x
@@ -322,6 +324,8 @@ php artisan about
 
 ## Étape 5 — Désactiver le préfixe emoji des composants
 
+#### Publication de la configuration Livewire
+
 Livewire 4 préfixe par défaut les fichiers de composants d'un caractère éclair (`⚡`). C'est purement cosmétique et désactivable. On le désactive pour garder des noms de fichiers sobres et sans caractère spécial.
 
 ```powershell
@@ -330,6 +334,8 @@ php artisan livewire:publish --config
 ```
 
 Ouvre `config/livewire.php` et règle l'option de génération pour ne pas utiliser l'emoji. Selon la version mineure, l'option se nomme autour de `use_emoji` / `emoji` dans la section de génération de composants :
+
+#### `config/livewire.php`
 
 ```php
 // Dans config/livewire.php, section de configuration des composants generes.
@@ -347,6 +353,8 @@ Ouvre `config/livewire.php` et règle l'option de génération pour ne pas utili
 
 ## Étape 6 — Créer le premier Single-File Component
 
+#### Génération du composant `recipe-index`
+
 On crée un composant **page** (full-page), dans le namespace `pages::` introduit par Livewire 4.
 
 ```powershell
@@ -356,6 +364,8 @@ php artisan make:livewire pages.recipe-index
 ```
 
 Le fichier généré est un SFC : un bloc PHP en tête (classe anonyme étendant `Livewire\Component`), suivi du markup Blade. Remplace son contenu par une version minimale qui affiche un titre, pour valider le rendu avant d'y mettre la logique :
+
+#### `resources/views/livewire/pages/recipe-index.blade.php` (Test)
 
 ```blade
 <?php
@@ -383,6 +393,8 @@ new class extends Component {
 <br>
 
 ## Étape 7 — Déplacer la logique du contrôleur vers le composant
+
+#### `resources/views/livewire/pages/recipe-index.blade.php` (Logique PHP)
 
 La logique « récupérer les recettes » quitte le contrôleur pour rejoindre le composant. On l'expose via une propriété calculée `#[Computed]`, mise en cache pour la durée de la requête.
 
@@ -452,6 +464,8 @@ Note la différence d'accès : en Phase 2 la vue recevait `$recipes` (variable p
 
 ## Étape 8 — Router la page via Route::livewire()
 
+#### `routes/web.php` (Passage à Route::livewire)
+
 Livewire 4 introduit `Route::livewire()` pour pointer une URL directement sur un composant page, sans contrôleur. Ouvre `routes/web.php` :
 
 ```php
@@ -483,6 +497,8 @@ Recharge `http://127.0.0.1:8000/recettes`. La liste s'affiche, désormais produi
 <br>
 
 ## Étape 9 — Styliser la liste avec Tailwind
+
+#### `resources/views/livewire/pages/recipe-index.blade.php` (Design Tailwind)
 
 On remplace la liste brute par une grille de cartes responsive. Tout le style passe par des classes Tailwind ; aucune feuille CSS séparée. Remplace le markup (la partie après `?>`) du SFC :
 
@@ -539,10 +555,7 @@ Assure-toi que `npm run dev` tourne. Recharge la page : grille de cartes respons
 
 Commit :
 
-```powershell
-git add .
-git commit -m "feat: Tailwind 4 + Livewire 4, liste de recettes en Single-File Component"
-```
+#### Commit de la Phase 3
 
 <br>
 
@@ -560,6 +573,8 @@ git commit -m "feat: Tailwind 4 + Livewire 4, liste de recettes en Single-File C
 | Le conserver | Utile si tu prévois une API ou un export plus tard | Acceptable, mais documenter pourquoi |
 
 Pour ce parcours, on supprime le contrôleur d'index : la logique vit désormais dans le composant, le garder vide serait du bruit.
+
+#### Nettoyage du contrôleur obsolète
 
 ```powershell
 # Supprime le controleur devenu inutile

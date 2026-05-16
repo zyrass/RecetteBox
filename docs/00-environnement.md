@@ -141,6 +141,8 @@ Git est l'outil de versionning. On l'installe avant tout pour pouvoir commiter d
 
 Ouvre **PowerShell** (pas besoin d'administrateur pour `winget`) et exécute :
 
+#### Installation de Git
+
 ```powershell
 # Installation de Git via le gestionnaire de paquets natif Windows 11
 # winget est livré avec Windows 11, aucune installation préalable nécessaire
@@ -151,12 +153,16 @@ winget install --id Git.Git --source winget --accept-source-agreements --accept-
 
 Ferme et rouvre PowerShell pour rafraîchir la variable `PATH`, puis vérifie :
 
+#### Vérification de Git
+
 ```powershell
 # La commande doit renvoyer "git version 2.x.x..."
 git --version
 ```
 
 Configure ton identité (utilisée dans chaque commit) :
+
+#### Configuration de l'identité Git
 
 ```powershell
 # Remplace par tes vraies valeurs
@@ -180,12 +186,16 @@ git config --global core.autocrlf input
 
 Node sert à exécuter Vite, qui compile Tailwind 4 et bundle les assets. La version 22 est la LTS active jusqu'en avril 2027.
 
+#### Installation de Node.js 22 LTS
+
 ```powershell
 # Installe Node.js 22 LTS et npm
 winget install --id OpenJS.NodeJS.LTS --source winget --accept-source-agreements --accept-package-agreements
 ```
 
 Ferme et rouvre PowerShell, puis vérifie :
+
+#### Vérification de Node.js et npm
 
 ```powershell
 # Doit afficher v22.x.x
@@ -208,6 +218,8 @@ npm --version
 `php.new` est l'installeur officiel poussé par Laravel. Il pose PHP avec toutes les extensions courantes activées (`mbstring`, `openssl`, `pdo_sqlite`, `curl`, `fileinfo`, etc.), Composer, et la commande `laravel`, en **une seule exécution**.
 
 Ouvre **PowerShell en administrateur** (clic droit sur l'icône PowerShell, « Exécuter en tant qu'administrateur ») et exécute :
+
+#### Installation de PHP, Composer et Laravel (php.new)
 
 ```powershell
 # Décomposition de cette ligne :
@@ -236,6 +248,8 @@ Le script va :
 
 Vérifie ensuite :
 
+#### Vérification des versions PHP, Composer et Laravel
+
 ```powershell
 # Doit afficher PHP 8.4.x
 php --version
@@ -248,6 +262,8 @@ laravel --version
 ```
 
 Confirme aussi les extensions PHP critiques pour Laravel et SQLite :
+
+#### Vérification des extensions PHP actives
 
 ```powershell
 # Doit lister : ctype, curl, fileinfo, mbstring, openssl, pdo_sqlite, tokenizer, xml, zip
@@ -268,6 +284,8 @@ SQLite n'a pas besoin d'être installé séparément : il fonctionne via l'exten
 
 Test rapide :
 
+#### Test de fonctionnement SQLite via PHP
+
 ```powershell
 # Crée un fichier SQLite temporaire et y exécute une requête via PHP
 # Le simple fait que ces lignes ne lèvent pas d'erreur prouve que pdo_sqlite fonctionne
@@ -284,12 +302,16 @@ Sortie attendue : `SQLite OK`.
 
 ## Étape 5 — Installer VS Code et ses extensions
 
+#### Installation de Visual Studio Code
+
 ```powershell
 # Installation de VS Code
 winget install --id Microsoft.VisualStudioCode --source winget --accept-source-agreements --accept-package-agreements
 ```
 
 Ferme et rouvre PowerShell, puis installe les extensions essentielles en ligne de commande :
+
+#### Installation des extensions recommandées
 
 ```powershell
 # Tailwind CSS IntelliSense : autocomplétion des classes utilitaires Tailwind 4
@@ -324,6 +346,8 @@ code --install-extension eamodio.gitlens
 
 À ce stade, on prépare **uniquement** le dossier du repository. Le code Laravel sera généré en Phase 1.
 
+#### Création de l'arborescence et initialisation Git
+
 ```powershell
 # Crée le dossier projet à l'emplacement de ton choix
 # Ici on prend Documents\Projets, adapte si tu as une autre convention
@@ -345,7 +369,7 @@ mkdir docs
 Crée maintenant le `README.md` et `docs/00-environnement.md` (copie ceux du repo modèle).
 
 ```powershell
-# Premier commit : la documentation seule, avant tout code
+#### Premier commit de documentation
 git add .
 git commit -m "docs: ajouter README et documentation Phase 0"
 
@@ -365,6 +389,8 @@ git checkout -b phase/00-environnement
 ## Vérifications finales
 
 Exécute ces six commandes l'une après l'autre. Toutes doivent répondre sans erreur.
+
+#### Rapport de version global
 
 ```powershell
 # Toutes les commandes ci-dessous doivent renvoyer une version
