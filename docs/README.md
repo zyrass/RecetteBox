@@ -13,7 +13,7 @@ Guides d'installation et de préparation de l'environnement de développement se
 ### [01-cursus](./01-cursus/)
 Le cœur de l'apprentissage. Chaque phase introduit un concept majeur de l'écosystème Laravel moderne (TALL stack).
 *   Fichiers : 01-squelette.md, 02-modele.md, 03-livewire.md.
-*   À faire : 04-reactivite.md, 05-crud-alpine.md, 06-dashboard.md, 07-finitions.md, 08-tests.md.
+*   À faire : [04-reactivite.md](./04-reactivite.md), [05-crud-alpine.md](./05-crud-alpine.md), [06-dashboard.md](./06-dashboard.md), [07-finitions.md](./07-finitions.md), [08-tests.md](./08-tests.md).
 
 ### [09-bonus](./09-bonus/)
 Modules optionnels pour aller plus loin une fois le cursus principal maîtrisé.

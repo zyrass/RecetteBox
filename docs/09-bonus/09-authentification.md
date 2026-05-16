@@ -679,5 +679,5 @@ Si un jour tu repars d'un projet neuf et veux la voie recommandée par Laravel a
 
 <br>
 
-> Phase précédente : [03-livewire.md](../01-cursus/03-livewire.md)
+> Phase précédente : [08-tests.md](../01-cursus/08-tests.md)
 > Fin du parcours RecetteBox. Le cœur (phases 00-03+) constitue le socle ; ce bonus montre comment l'authentification se greffe proprement sur une application déjà saine, plutôt que d'être un pré-requis imposé dès la première ligne.

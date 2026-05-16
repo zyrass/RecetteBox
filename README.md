@@ -166,11 +166,11 @@ Le **cœur du projet** correspond aux phases 00 à 07. La phase 08 est un emplac
 | Phase 01 | [docs/01-cursus/01-squelette.md](docs/01-cursus/01-squelette.md) | Prêt |
 | Phase 02 | [docs/01-cursus/02-modele.md](docs/01-cursus/02-modele.md) | Prêt |
 | Phase 03 | [docs/01-cursus/03-livewire.md](docs/01-cursus/03-livewire.md) | Prêt |
-| Phase 04 | docs/01-cursus/04-reactivite.md | À faire |
-| Phase 05 | docs/01-cursus/05-crud-alpine.md | À faire |
-| Phase 06 | docs/01-cursus/06-dashboard.md | À faire |
-| Phase 07 | docs/01-cursus/07-finitions.md | À faire |
-| Phase 08 | docs/01-cursus/08-tests.md | À faire |
+| Phase 04 | [docs/01-cursus/04-reactivite.md](docs/01-cursus/04-reactivite.md) | À faire |
+| Phase 05 | [docs/01-cursus/05-crud-alpine.md](docs/01-cursus/05-crud-alpine.md) | À faire |
+| Phase 06 | [docs/01-cursus/06-dashboard.md](docs/01-cursus/06-dashboard.md) | À faire |
+| Phase 07 | [docs/01-cursus/07-finitions.md](docs/01-cursus/07-finitions.md) | À faire |
+| Phase 08 | [docs/01-cursus/08-tests.md](docs/01-cursus/08-tests.md) | À faire |
 | Phase 09 | [docs/09-bonus/09-authentification.md](docs/09-bonus/09-authentification.md) | Bonus |
 
 <br>
