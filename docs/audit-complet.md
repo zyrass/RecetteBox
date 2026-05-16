@@ -80,7 +80,7 @@
 
 ## 5. Conclusion de l'Audit
 
-Le projet RecetteBox présente une **maturité technique élevée** pour une application de cursus. L'architecture TALL est implémentée selon les "best practices" de 2026. L'application est structurellement prête pour l'ajout des tests (Phase 08) et de l'authentification (Phase 09).
+Le projet RecetteBox présente une **maturité technique élevée** pour une application de cursus. L'architecture TALL est implémentée selon les "best practices" de 2026. L'application est structurellement prête pour l'ajout des tests (Phase 08) et dispose déjà de son module d'authentification complet en [Phase 09 (Bonus)](./09-bonus/09-authentification.md).
 
 > [!IMPORTANT]
 > ### Score de fiabilité structurelle : 95%
