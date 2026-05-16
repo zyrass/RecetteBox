@@ -188,6 +188,16 @@ flowchart TD
 
 ### Initialisation de la Phase 3
 
+```powershell
+cd $env:USERPROFILE\Documents\Projets\recettebox
+
+# Verifier que la Phase 2 est commitee proprement
+git status
+
+# Branche dediee a la Phase 3
+git checkout -b phase/03-livewire
+```
+
 <br>
 
 ---
@@ -199,6 +209,11 @@ flowchart TD
 Le projet ayant été créé **sans starter kit**, Tailwind n'est pas présent. On suit la procédure officielle Tailwind 4 pour Laravel + Vite.
 
 ### Installation de Tailwind CSS 4
+
+```powershell
+# Installe Tailwind 4 et son plugin Vite officiel
+npm install tailwindcss @tailwindcss/vite
+```
 
 Édite `vite.config.js` à la racine pour enregistrer le plugin Tailwind :
 
@@ -304,6 +319,11 @@ Tu peux conserver l'ancien `resources/views/layouts/app.blade.php` de la Phase 1
 ## Étape 4 — Installer Livewire 4
 
 ### Installation de Livewire 4
+
+```powershell
+# Installe le paquet Livewire 4
+composer require livewire/livewire
+```
 
 Livewire 4 est « zéro configuration » : il auto-injecte son JavaScript et Alpine.js dans les pages contenant un composant. Aucune directive `@livewireScripts` à ajouter manuellement dans le cas standard.
 
@@ -553,9 +573,20 @@ On remplace la liste brute par une grille de cartes responsive. Tout le style pa
 
 Assure-toi que `npm run dev` tourne. Recharge la page : grille de cartes responsive, étiquettes en pastilles, badge favori. C'est le premier rendu présentable du projet.
 
-Commit :
-
 ### Commit de la Phase 3
+
+```powershell
+# Ajouter les fichiers modifices
+git add .
+
+# Verifier que les changements sont corrects
+git diff --cached
+
+# Commit
+git commit -m "feat: Tailwind 4 + Livewire 4, liste de recettes en Single-File Component"
+```
+
+
 
 <br>
 

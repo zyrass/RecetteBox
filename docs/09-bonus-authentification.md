@@ -247,6 +247,7 @@ php artisan breeze:install blade
 À l'issue de cette commande, Breeze a publié dans ton projet : routes d'auth, contrôleurs, vues Blade, requêtes de formulaire, et a modifié `package.json` / la configuration Vite si nécessaire.
 
 ### Migrations et compilation assets
+
 ```powershell
 # Installer les dépendances front ajoutées par Breeze, puis compiler
 npm install
@@ -308,6 +309,7 @@ php artisan make:migration add_user_id_to_recipes_table --table=recipes
 ```
 
 ### Migration : `add_user_id_to_recipes_table`
+
 Édite la migration générée dans `database/migrations/` :
 
 ```php
@@ -341,6 +343,7 @@ public function down(): void
 > SQLite a des limites sur la modification de colonnes existantes. L'ajout d'une colonne avec clé étrangère fonctionne, mais une suppression via `down()` peut nécessiter la recréation de table sur d'anciennes versions.
 
 ### Exécution de la migration
+
 ```powershell
 php artisan migrate
 ```
@@ -463,7 +466,10 @@ Recipe::create([
 
 ## Étape 7 — Autorisation fine avec une Policy
 
+Le scoping de l'étape 6 empêche d'**afficher** les recettes d'autrui, mais pas forcément de les **modifier** via une requête forgée sur un identifiant. Une Policy verrouille les actions d'écriture.
+
 ### Génération de la Policy Recipe
+
 ```powershell
 # Générer une policy liée au modèle Recipe
 php artisan make:policy RecipePolicy --model=Recipe
@@ -533,6 +539,7 @@ public function run(): void
 ```
 
 ### Reset global et ré-exécution du seeder
+
 ```powershell
 # Recrée le schéma et réinjecte des données cohérentes avec l'auth
 php artisan migrate:fresh --seed

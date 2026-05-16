@@ -368,8 +368,10 @@ mkdir docs
 
 Crée maintenant le `README.md` et `docs/00-environnement.md` (copie ceux du repo modèle).
 
-```powershell
+### Premier commit de documentation
 
+```powershell
+# Premier commit : la documentation seule, avant tout code
 git add .
 git commit -m "docs: ajouter README et documentation Phase 0"
 

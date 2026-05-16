@@ -254,6 +254,16 @@ flowchart TD
 
 ### Initialisation de la Phase 2
 
+```powershell
+cd $env:USERPROFILE\Documents\Projets\recettebox
+
+# Verifier que la Phase 1 est commitee proprement
+git status
+
+# Branche dediee a la Phase 2
+git checkout -b phase/02-modele
+```
+
 <br>
 
 ---
