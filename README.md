@@ -54,6 +54,21 @@ _Une **phase bonus optionnelle** ajoute ensuite l'authentification (Laravel Bree
 
 <br>
 
+## ⏱️ Durée estimée
+
+Selon votre objectif, le temps d'investissement varie :
+
+*   **Mode "Pratique" (6 à 8 heures)** : Pour assembler rapidement le projet en suivant les guides (idéal pour un premier aperçu fonctionnel).
+*   **Mode "Étude" (15 à 25 heures)** : Pour comprendre chaque concept, réécrire le code manuellement et maîtriser les flux asynchrones (recommandé pour une valorisation en entretien technique).
+
+<br>
+
+<br>
+
+---
+
+<br>
+
 ## Aperçu de l'Interface
 
 _Ces images ont été générées par Antigravity (Banana) en se basant sur le code source actuel du projet pour illustrer le rendu visuel final attendu._
