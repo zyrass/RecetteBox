@@ -1,7 +1,7 @@
 # Audit Complet du Projet RecetteBox (v1.0.0)
 
 > [!NOTE]
-> Cet audit a été réalisé après l'achèvement de la Phase 07 (Finitions). Il exclut volontairement la Phase 08 (Tests avec Pest) qui fera l'objet d'un audit de couverture ultérieur.
+> Cet audit a été réalisé après l'achèvement de la Phase 07 (Finitions). Il exclut volontairement la Phase 08 (Tests avec Pest [^1]) qui fera l'objet d'un audit de couverture ultérieur.
 
 <br>
 
@@ -13,14 +13,14 @@
 
 **Attentes** : Une stack moderne, performante et sans surpoids technique, facilitant le passage d'un environnement de développement à une production légère. Le choix des outils doit être justifié par le besoin métier.
 
-**Analyse** : Au vu des fichiers de configuration et de la structure des dossiers, le projet utilise la stack **TALL** (Tailwind, Alpine, Livewire, Laravel) dans sa version la plus récente. L'exploitation des [Routes](file:///g:/www/projects/laravel/recettebox/routes/web.php) et du Service Container montre une connaissance approfondie du framework.
+**Analyse** : Au vu des fichiers de configuration et de la structure des dossiers, le projet utilise la stack **TALL** [^2] (Tailwind, Alpine, Livewire, Laravel) dans sa version la plus récente. L'exploitation des **[Routes](file:///g:/www/projects/laravel/recettebox/routes/web.php)** et du Service Container montre une connaissance approfondie du framework.
 
 | Composant | Technologie | Statut | Fichiers clés |
 |---|---|---|---|
-| **Core** | Laravel 13.x | ✅ | [Kernel/Web.php](file:///g:/www/projects/laravel/recettebox/routes/web.php) |
-| **Interface** | Livewire 4.x | ✅ | [RecipeIndex.php](file:///g:/www/projects/laravel/recettebox/app/Livewire/Pages/RecipeIndex.php) |
-| **Styles** | Tailwind 4.x | ✅ | [app.css](file:///g:/www/projects/laravel/recettebox/resources/css/app.css) |
-| **Base** | SQLite | ✅ | [database.sqlite](file:///g:/www/projects/laravel/recettebox/database/database.sqlite) |
+| **Core** | Laravel 13.x | ✅ | **[Kernel/Web.php](file:///g:/www/projects/laravel/recettebox/routes/web.php)** |
+| **Interface** | Livewire 4.x | ✅ | **[RecipeIndex.php](file:///g:/www/projects/laravel/recettebox/app/Livewire/Pages/RecipeIndex.php)** [^3] |
+| **Styles** | Tailwind 4.x | ✅ | **[app.css](file:///g:/www/projects/laravel/recettebox/resources/css/app.css)** |
+| **Base** | SQLite | ✅ | **[database.sqlite](file:///g:/www/projects/laravel/recettebox/database/database.sqlite)** |
 
 **Conclusion** : La stack répond parfaitement aux exigences de 2026. L'absence de Docker ou de Redis est ici un choix de sobriété validé par la nature pédagogique du projet.
 
@@ -34,13 +34,13 @@
 
 **Attentes** : Une structure de données typée, sécurisée et capable de simuler des scénarios réels via des Seeders et Factories.
 
-**Analyse** : Au vu des fichiers [Recipe.php](file:///g:/www/projects/laravel/recettebox/app/Models/Recipe.php) et des enums comme [RecipeCategory.php](file:///g:/www/projects/laravel/recettebox/app/Enums/RecipeCategory.php), l'implémentation dépasse les standards habituels. La conclusion répond aux exigences de sécurité grâce au recours aux Enums PHP 8.4 pour le casting Eloquent, ce qui prévient toute corruption de données.
+**Analyse** : Au vu des fichiers **[Recipe.php](file:///g:/www/projects/laravel/recettebox/app/Models/Recipe.php)** et des enums comme **[RecipeCategory.php](file:///g:/www/projects/laravel/recettebox/app/Enums/RecipeCategory.php)**, l'implémentation dépasse les standards habituels. La conclusion répond aux exigences de sécurité grâce au recours aux Enums PHP 8.4 pour le casting Eloquent, ce qui prévient toute corruption de données.
 
 > [!TIP]
 > ### Points forts validés
 > - **Casting strict** : Intégrité garantie par les Enums natifs.
-> - **Relations** : Gestion propre des Tags et du `cascadeOnDelete` dans les [Migrations](file:///g:/www/projects/laravel/recettebox/database/migrations/).
-> - **Réalisme** : Le [RecipeSeeder](file:///g:/www/projects/laravel/recettebox/database/seeders/RecipeSeeder.php) génère un dataset crédible pour les tests manuels.
+> - **Relations** : Gestion propre des Tags et du `cascadeOnDelete` dans les **[Migrations](file:///g:/www/projects/laravel/recettebox/database/migrations/)**.
+> - **Réalisme** : Le **[RecipeSeeder](file:///g:/www/projects/laravel/recettebox/database/seeders/RecipeSeeder.php)** génère un dataset crédible pour les tests manuels.
 
 > [!CAUTION]
 > ### Point de vigilance : Performance
@@ -54,13 +54,13 @@
 
 ## 3. Expérience Utilisateur (UX/UI)
 
-**Attentes** : Une interface réactive, fluide (SPA) et accessible, avec un feedback utilisateur immédiat (Toasts, Loaders).
+**Attentes** : Une interface réactive, fluide (SPA [^4]) et accessible, avec un feedback utilisateur immédiat (Toasts, Loaders).
 
-**Analyse** : L'examen du [Layout App](file:///g:/www/projects/laravel/recettebox/resources/views/components/layouts/app.blade.php) et du composant [Toast](file:///g:/www/projects/laravel/recettebox/resources/views/components/toast.blade.php) montre une maîtrise avancée de l'interactivité hybride Livewire/Alpine. La conclusion confirme que l'interface offre une fluidité de type SPA tout en restant simple à maintenir.
+**Analyse** : L'examen du **[Layout App](file:///g:/www/projects/laravel/recettebox/resources/views/components/layouts/app.blade.php)** et du composant **[Toast](file:///g:/www/projects/laravel/recettebox/resources/views/components/toast.blade.php)** montre une maîtrise avancée de l'interactivité hybride Livewire/Alpine. La conclusion confirme que l'interface offre une fluidité de type SPA tout en restant simple à maintenir.
 
 > [!TIP]
 > ### Éléments remarquables
-> - **FOUC maîtrisé** : Le script de thème en `head` évite le flash blanc.
+> - **FOUC maîtrisé** [^5] : Le script de thème en `head` évite le flash blanc.
 > - **Feedback** : Utilisation intensive de `wire:loading` et `wire:dirty`.
 > - **Fluidité** : Navigation instantanée via `wire:navigate`.
 
@@ -74,9 +74,9 @@
 
 ## 4. Standard Documentaire (ABI)
 
-**Attentes** : Une documentation exhaustive, structurée et visuelle (ABI) facilitant l'onboarding et la maintenance du code.
+**Attentes** : Une documentation exhaustive, structurée et visuelle (ABI [^6]) facilitant l'onboarding et la maintenance du code.
 
-**Analyse** : Au vu des guides comme [07-finitions.md](file:///g:/www/projects/laravel/recettebox/docs/01-cursus/07-finitions.md), la documentation respecte scrupuleusement le standard ABI. L'usage de Mermaid pour les diagrammes est un point fort qui permet de visualiser les flux de données complexes sans lire le code source.
+**Analyse** : Au vu des guides comme **[07-finitions.md](file:///g:/www/projects/laravel/recettebox/docs/01-cursus/07-finitions.md)**, la documentation respecte scrupuleusement le standard ABI. L'usage de Mermaid pour les diagrammes est un point fort qui permet de visualiser les flux de données complexes sans lire le code source.
 
 > [!TIP]
 > ### Conformité ABI
@@ -94,11 +94,11 @@
 
 **Attentes** : Une couche de sécurité isolée, multi-utilisateurs, avec une gestion fine des droits d'accès.
 
-**Analyse** : Au vu de l'implémentation via [Laravel Breeze](file:///g:/www/projects/laravel/recettebox/docs/09-bonus/09-authentification.md) et la sécurisation par la [RecipePolicy](file:///g:/www/projects/laravel/recettebox/app/Policies/RecipePolicy.php), la conclusion est sans appel : l'application est prête pour un déploiement réel.
+**Analyse** : Au vu de l'implémentation via **[Laravel Breeze](file:///g:/www/projects/laravel/recettebox/docs/09-bonus/09-authentification.md)** et la sécurisation par la **[RecipePolicy](file:///g:/www/projects/laravel/recettebox/app/Policies/RecipePolicy.php)**, la conclusion est sans appel : l'application est prête pour un déploiement réel.
 
 > [!TIP]
 > ### Sécurisation validée
-> - **Middleware** : Protection globale des routes sensibles dans [web.php](file:///g:/www/projects/laravel/recettebox/routes/web.php).
+> - **Middleware** [^7] : Protection globale des routes sensibles dans **[web.php](file:///g:/www/projects/laravel/recettebox/routes/web.php)**.
 > - **Scoping** : Isolation des données par `user_id` dans les composants Livewire.
 > - **Policies** : Contrôle d'accès fin interdisant toute manipulation frauduleuse.
 
@@ -117,6 +117,22 @@ Le projet RecetteBox n'est pas une simple démonstration ; c'est un écosystème
 > ### Résultat Final : Portfolio-Ready
 > **Score de fiabilité : 95%**. 
 > L'application remplit tous les critères d'une réalisation senior. Le passage à 100% sera atteint après l'implémentation de la Phase 08 (Tests Pest).
+
+<br>
+
+---
+
+<br>
+
+### Glossaire technique (Footnotes)
+
+[^1]: **Pest** : Framework de tests PHP axé sur la simplicité et la lisibilité, utilisé ici pour sécuriser le code métier.
+[^2]: **TALL Stack** : Ensemble technologique comprenant Tailwind CSS, Alpine.js, Livewire et Laravel.
+[^3]: **SFC (Single File Components)** : Composants Livewire 4 regroupant la logique PHP et la vue Blade dans un seul fichier.
+[^4]: **SPA (Single Page Application)** : Application web où la navigation s'effectue sans rechargement complet de la page.
+[^5]: **FOUC (Flash of Unstyled Content)** : Apparition brève du contenu sans style (ou avec le mauvais thème) au chargement de la page.
+[^6]: **ABI Standard** : Norme documentaire interne (Admonitions, Blocs, Illustrations) garantissant la qualité pédagogique.
+[^7]: **Middleware** : Mécanisme Laravel permettant de filtrer les requêtes HTTP entrant dans l'application (ex: vérification d'auth).
 
 <br>
 
